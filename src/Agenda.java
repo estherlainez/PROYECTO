@@ -1,15 +1,26 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.TreeSet;
 
-public abstract class Contacto {
-	int id;
+
+
+public abstract class Agenda implements Serializable, Comparable{
+	
 	String nombre;
 	String apellidos;
 	String telefono;
 	String fecha_nacimiento;
 	String origen;
-	private int cod=1;
-	private static int codigo;
-
-	public Contacto(String n,String a, String t, String f) {
+	int cod=1;
+	protected static int codigo;
+	Agenda contactos[];
+	TreeSet<Agenda> listacontactos;
+	
+	 
+	public Agenda(int cod,String n,String a, String t, String f) {
+		this.cod=codigo;
+		codigo++;
 		this.nombre=n;
 		this.apellidos=a;
 		this.telefono=t;
@@ -18,16 +29,8 @@ public abstract class Contacto {
 		codigo++;
 	}
 
-	public abstract int CalcularAfinidad(String origen,int valor);
+	public abstract int CalcularAfinidad(int origen,int valor);
 	
-	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getNombre() {
 		return nombre;
@@ -74,14 +77,21 @@ public abstract class Contacto {
 	}
 
 	public static void setCodigo(int codigo) {
-		Contacto.codigo = codigo;
+		Agenda.codigo = codigo;
 	}
 
 	@Override
 	public String toString() {
-		return "Contacto [id=" + id + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", cod=" + cod + "]";
+		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
+				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + origen + ", cod=" + cod + ", contactos="
+				+ Arrays.toString(contactos) + ", listacontactos=" + listacontactos + "]";
 	}
+
 	
+	@Override
+	public int compareTo(Object o1) {
+		Agenda Ob1 = (Agenda)o1;		
+		return this.getNombre().compareTo(Ob1.getNombre());
+	}
 	
 }

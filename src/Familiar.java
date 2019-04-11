@@ -1,34 +1,50 @@
 
-public class Familiar extends Contacto{
-	String parentesco;
-	ArrayList  redesSociales;
-	String cumpleaños;
+public class Familiar extends Agenda{
+	int parentesco;
+	
 	
 
-	public Familiar(String n, String a, String t, String f,String p,String c,String r) {
-		super(n, a, t, f);
+	public Familiar(int cod,String n, String a, String t, String f,int p) {
+		super(cod,n, a, t, f);
 		this.parentesco=p;
-		this.redesSociales=r;
-		this.cumpleaños=c;
+		
 		
 	}
 
-	@Override
-	public int CalcularAfinidad(int valor) {
-		String grado1 = null;
-		String grado2 = null;
-		String grado3 = null;
+
+
+	public int getParentesco() {
+		return parentesco;
+	}
+
+
+
+	public void setParentesco(int parentesco) {
+		this.parentesco = parentesco;
+	}
+
+
+
+	public int CalcularAfinidad(int gradoParentesco, int valor) {
+		
 		int afinidad=0;
-		if (parentesco==grado1) {
-			afinidad=valor*10;
-			}else if(parentesco==grado2) {
-				afinidad=valor*5;
-				}else if(parentesco==grado3) {
-					afinidad=valor*1;
+		if (gradoParentesco==1) {
+			afinidad=valor+10;
+			}else if(gradoParentesco==3)  {
+				afinidad=valor+5;
+				}else if(gradoParentesco==3)  {
+					afinidad=valor+1;
 					}
 		
 		return afinidad;
-		
 	}
+
+	@Override
+	public String toString() {
+		 return super.toString()+"Familiar [parentesco=" + parentesco + "]";
+	}
+	
+		
+	
 
 }
