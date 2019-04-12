@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 
 public class Amigo extends Agenda {
-	RedesSociales DatosRedes;
+	
 	int origen;//sera aficion infancia o trabajo
 	int valorAfinidad;//Este sera de 0 a 10 segun la confianza
-//	RedesSociales=DatosRedesSociales;
 	
+	
+	public Amigo(int cod,String n,String a, String t, String f) {
+		super(cod,n,a,t,f);
+	}
 	
 	public Amigo(int cod,String n, String a, String t, String f,int o, int v) {
 		super(cod,n, a, t, f);
@@ -14,19 +17,6 @@ public class Amigo extends Agenda {
 		
 		
 	}
-
-
-
-	public RedesSociales getDatosRedes() {
-		return DatosRedes;
-	}
-
-
-
-	public void setDatosRedes(RedesSociales datosRedes) {
-		DatosRedes = datosRedes;
-	}
-
 
 
 	public int getOrigen() {
@@ -53,17 +43,15 @@ public class Amigo extends Agenda {
 
 
 
-	public int CalcularAfinidad(int origen, int valor) {
-		int aficiones = 1;
-		int infancia = 2;
-		int trabajo = 3;
+	public int CalcularAfinidad(int origen, int valorAfinidad) {
+	
 		int afinidad=0;
-		if (origen==aficiones) {
-			afinidad=valor*10;
-			}else if(origen==infancia) {
-				afinidad=valor*5;
-				}else if(origen==trabajo) {
-					afinidad=valor*1;
+		if (origen==1) {
+			afinidad=valorAfinidad*10;
+			}else if(origen==2) {
+				afinidad=valorAfinidad*5;
+				}else if(origen==3) {
+					afinidad=valorAfinidad*1;
 					}
 		
 		return afinidad;

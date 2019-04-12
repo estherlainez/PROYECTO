@@ -2,7 +2,9 @@
 public class Familiar extends Agenda{
 	int parentesco;
 	
-	
+	public Familiar(int cod,String n,String a, String t, String f) {
+		super(cod,n,a,t,f);
+	}
 
 	public Familiar(int cod,String n, String a, String t, String f,int p) {
 		super(cod,n, a, t, f);
