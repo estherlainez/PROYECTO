@@ -1,46 +1,46 @@
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class RedesSociales {
 
-	String nombre;
-	String Nick;
-	String cumpleaños;
+	String nombreRed;
+	String nickContacto;
+
+	public RedesSociales(String no, String ni) {
+		this.nombreRed=no;
+		this.nickContacto=ni;
 	
-	public RedesSociales(String no, String ni,String cu) {
-		this.nombre=no;
-		this.Nick=ni;
-		this.cumpleaños=cu;
 	}
 
-	public String getNombre() {
-		return nombre;
+
+	public String getNombreRed() {
+		return nombreRed;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+
+	public void setNombreRed(String nombreRed) {
+		this.nombreRed = nombreRed;
 	}
 
-	public String getNick() {
-		return Nick;
+
+	public String getNickContacto() {
+		return nickContacto;
 	}
 
-	public void setNick(String nick) {
-		Nick = nick;
-	}
-	
-	public String getCumpleaños() {
-		return cumpleaños;
+
+	public void setNickContacto(String nickContacto) {
+		this.nickContacto = nickContacto;
 	}
 
-	public void setCumpleaños(String cumpleaños) {
-		this.nombre = cumpleaños;
-	}
 
-	
+	@Override
 	public String toString() {
-		return " \nDatos adicionales de este contacto :\n"+
-				" Nombre de la red: "+this.nombre+
-				" Nick: "+this.Nick+
-				" Cumpleaños: "+this.cumpleaños;
+		return "RedesSociales [nombreRed=" + nombreRed + ",\n nickContacto=" + nickContacto + "]";
 	}
+
+
+
+	
 }
 

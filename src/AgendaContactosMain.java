@@ -8,22 +8,27 @@ import java.io.DataInputStream;
 	import java.io.IOException;
 	import java.io.ObjectInputStream;
 	import java.io.ObjectOutputStream;
-	import java.util.Collections;
+	import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 	import java.util.Scanner;
+	import java.util.Set;
 	import java.util.TreeSet;
 	import java.util.Iterator;
 
 
 public class AgendaContactosMain {
 	
-		public static void main(String[] args) throws ClassNotFoundException {
+		public static void main(String[] args) throws ClassNotFoundException, ClassCastException {
 			// TODO Auto-generated method stub
 			Scanner teclado=new Scanner (System.in);
 			
+			
 			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0;
-
+			String respuesta="",si="",no="";
 			
 			TreeSet <Agenda> contactos = new TreeSet<>();
+			RedesSociales datosRD = new RedesSociales(null, null);
 			Agenda p = null;
 			File file = new File("c:\\archivos\\miAgenda.dat");
 			int i=0;
@@ -74,6 +79,9 @@ public class AgendaContactosMain {
 				opcion=teclado.nextInt();
 				
 				switch(opcion) {
+				
+				
+				
 				case 1:
 					System.out.println("1.Añadir amigo");
 					teclado.nextLine();
@@ -83,8 +91,29 @@ public class AgendaContactosMain {
 				
 					afinidad=a.CalcularAfinidad(a.getOrigen(), a.getValorAfinidad());
 					System.out.println("La afinidad de su amigo es de "+afinidad);
+					Agenda a1=(Amigo) a;
+					System.out.println("¿Tienes a este amigo en las redes sociales?");
+					System.out.println("Introduzca si o no");
+					teclado.nextLine();
+					respuesta=teclado.nextLine();
+					
+					do {
+						datosRD=DatosAgenda.añadirRedesSociales(contactos,teclado );
+						a1.add(datosRD);
+						
+						System.out.println("¿Alguna mas lo tienes?");
+						respuesta=teclado.nextLine();
+						
+					}while(respuesta==si);
+					System.out.println("Informacion del amigo ---> "+a1);
+					
+					
+					
 					break;
 				
+					
+				
+					
 				case 2:
 					System.out.println("2.Añadir familiar");
 					Familiar f=null;

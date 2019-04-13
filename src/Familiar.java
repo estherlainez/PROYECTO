@@ -9,23 +9,15 @@ public class Familiar extends Agenda{
 	public Familiar(int cod,String n, String a, String t, String f,int p) {
 		super(cod,n, a, t, f);
 		this.parentesco=p;
-		
-		
 	}
-
-
 
 	public int getParentesco() {
 		return parentesco;
 	}
 
-
-
 	public void setParentesco(int parentesco) {
 		this.parentesco = parentesco;
 	}
-
-
 
 	public int CalcularAfinidad(int gradoParentesco, int valor) {
 		
@@ -45,7 +37,9 @@ public class Familiar extends Agenda{
 	public String toString() {
 		 return super.toString()+"Familiar [parentesco=" + parentesco + "]";
 	}
+
 	
+
 		
 	
 

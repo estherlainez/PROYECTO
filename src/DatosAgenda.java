@@ -1,10 +1,10 @@
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Set;
 public class DatosAgenda {
 
-	public static Amigo  AñadirAmigo(Scanner teclado,TreeSet <Agenda>c) {
-		
+	public static Amigo  AñadirAmigo(Scanner teclado,TreeSet <Agenda>c) {	
 		System.out.println("Introduzca codigo");
 		int cod=teclado.nextInt();
 		System.out.println("Introduzca nombre");
@@ -27,12 +27,22 @@ public class DatosAgenda {
 		Amigo x= new Amigo(cod,n,a,t,f,o,v);
 		c.add(x);
 		return x;
+	}	
+
+	public static RedesSociales añadirRedesSociales(TreeSet <Agenda>c ,Scanner teclado) {
+		
+		System.out.println("¿En que redes tienes a este contacto");
+		String nombre=teclado.nextLine();
+		System.out.println("¿Con que nombre lo tienes?");
+		String nick = teclado.nextLine();	
+		
+		RedesSociales datosRD=new RedesSociales(nombre,nick);
+		return datosRD;
+		
 	}
 	
 	
-	
-	public static Familiar añadirFamiliar(Scanner teclado,TreeSet <Agenda>c) {
-		
+	public static Familiar añadirFamiliar(Scanner teclado,TreeSet <Agenda>c) {	
 		System.out.println("Inserte codigo");
 		int cod=teclado.nextInt();
 		System.out.println("Introduzca nombre");
@@ -46,13 +56,13 @@ public class DatosAgenda {
 		String f=teclado.nextLine();
 		System.out.println("Introduzca su grado de parentesco: 1,2,3 segun cercania familiar");
 		int p=teclado.nextInt();
-		
-		
 		Familiar fam= new Familiar(cod,n,a,t,f,p);
 		c.add(fam);
 	
 		return fam;
 	}
+	
+	
 	
 	public static void mostrtarListaContactos(TreeSet<Agenda> c) {
 		for(Agenda e:c) {
@@ -61,7 +71,7 @@ public class DatosAgenda {
 	}
 	
 	
-
+	
 	
 	
 	
