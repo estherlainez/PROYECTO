@@ -36,8 +36,8 @@ public class DatosAgenda {
 		System.out.println("¿Con que nombre lo tienes?");
 		String nick = teclado.nextLine();	
 		
-		RedesSociales datosRD=new RedesSociales(nombre,nick);
-		return datosRD;
+		RedesSociales datos=new RedesSociales(nombre,nick);
+		return datos;
 		
 	}
 	

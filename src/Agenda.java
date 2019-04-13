@@ -17,6 +17,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	Agenda contactos[];
 	TreeSet<Agenda> listacontactos;
 	ArrayList<RedesSociales> datosRD;
+	RedesSociales datosRD2;
 	 
 	
 	public Agenda(int cod,String n,String a, String t, String f) {
@@ -117,7 +118,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	@Override
 	public String toString() {
 		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + origen + ", cod=" + cod 
+				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + getOrigen() + ", cod=" + cod 
 				 + ", datosRD=" + datosRD + "]";
 	}
 
@@ -131,10 +132,6 @@ public abstract class Agenda implements Serializable, Comparable{
 		System.out.println("Has añadido esta informacion "+datos);
 		
 	}
-
-
-
-
 
 	
 	

@@ -47,7 +47,7 @@ public class Amigo extends Agenda {
 	
 	@Override
 	public String toString() {
-		return super.toString()+ "Amigo [origen=" + origen + ", valorAfinidad=" + valorAfinidad + "]";
+		return super.toString()+ "Amigo [valorAfinidad=" + valorAfinidad + "]";
 	}
 
 	

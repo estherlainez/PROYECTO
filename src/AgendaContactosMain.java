@@ -29,6 +29,7 @@ public class AgendaContactosMain {
 			
 			TreeSet <Agenda> contactos = new TreeSet<>();
 			RedesSociales datosRD = new RedesSociales(null, null);
+			ArrayList <RedesSociales> datosRED = new ArrayList<>();
 			Agenda p = null;
 			File file = new File("c:\\archivos\\miAgenda.dat");
 			int i=0;
@@ -99,7 +100,10 @@ public class AgendaContactosMain {
 					
 					do {
 						datosRD=DatosAgenda.añadirRedesSociales(contactos,teclado );
+						
+						datosRED.add(datosRD);
 						a1.add(datosRD);
+					
 						
 						System.out.println("¿Alguna mas lo tienes?");
 						respuesta=teclado.nextLine();
