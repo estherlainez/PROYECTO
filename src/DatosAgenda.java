@@ -30,10 +30,13 @@ public class DatosAgenda {
 	}	
 
 	public static RedesSociales añadirRedesSociales(Scanner teclado) {
+		teclado.nextLine();
+		System.out.println("¿En que redes tienes a este contacto?");
 		
-		System.out.println("¿En que redes tienes a este contacto");
 		String nombre=teclado.nextLine();
+		
 		System.out.println("¿Con que nombre lo tienes?");
+		
 		String nick = teclado.nextLine();	
 		
 		RedesSociales datos=new RedesSociales(nombre,nick);

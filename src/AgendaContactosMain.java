@@ -90,7 +90,6 @@ public class AgendaContactosMain {
 					Amigo a=null;
 					RedesSociales rd=null;
 					a=DatosAgenda.AñadirAmigo(teclado, contactos);
-					//rd=DatosAgenda.añadirRedesSociales(teclado);
 					System.out.println("Usted añadio "+a);
 				
 					afinidad=a.CalcularAfinidad(a.getOrigen(), a.getValorAfinidad());
@@ -100,17 +99,14 @@ public class AgendaContactosMain {
 					
 					boolean afirmacion=false;	
 					System.out.println("¿Tienes a este amigo en las redes sociales?");
-					System.out.println("Introduzca si o no");
-					teclado.nextLine();
-					respuesta=teclado.nextLine();								
-					
+					respuesta=teclado.nextLine();
 					if(respuesta==si) {
 						afirmacion=true;
 					}else if(respuesta==no) {
 						afirmacion=false;
 						System.out.println("Ya hemos guardado toda la informacion, ha sido un exito!");
 						}
-					//me falla el do while....
+					
 					do{
 						rd=DatosAgenda.añadirRedesSociales(teclado);
 						Redes.add(rd);
@@ -142,6 +138,34 @@ public class AgendaContactosMain {
 					valor=teclado.nextInt();
 					afinidad=f.CalcularAfinidad(f.getParentesco(), valor);
 					System.out.println("La afinidad de su familiar es de "+afinidad);
+					
+					Agenda f1=(Familiar) f;
+					
+						
+					System.out.println("¿Tienes a este familiar en las redes sociales?");
+					respuesta=teclado.nextLine();
+					afirmacion=false;
+					if(respuesta==si) {
+						afirmacion=true;
+					}else if(respuesta==no) {
+						afirmacion=false;
+						System.out.println("Ya hemos guardado toda la informacion, ha sido un exito!");
+						}
+					
+					do{
+						rd=DatosAgenda.añadirRedesSociales(teclado);
+						Redes.add(rd);
+						System.out.println("usted ha añadido esta informacion: \n "+rd);
+						f1.setDatosRD(Redes);
+							
+						System.out.println("¿Alguna mas lo tienes?");
+						respuesta=teclado.nextLine();
+						contador++;
+						
+					}while(afirmacion==true);
+					
+					System.out.println("Informacion del amigo ---> "+f1);
+					
 					break;
 					
 				
