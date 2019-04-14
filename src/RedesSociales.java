@@ -36,7 +36,7 @@ public class RedesSociales {
 
 	@Override
 	public String toString() {
-		return "RedesSociales [nombreRed=" + nombreRed + ",\n nickContacto=" + nickContacto + "]";
+		return "RedesSociales [nombreRed=" + nombreRed + ", nickContacto=" + nickContacto + "]";
 	}
 
 

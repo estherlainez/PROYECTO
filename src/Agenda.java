@@ -1,6 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -17,7 +18,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	Agenda contactos[];
 	TreeSet<Agenda> listacontactos;
 	ArrayList<RedesSociales> datosRD;
-	RedesSociales datosRD2;
+
 	 
 	
 	public Agenda(int cod,String n,String a, String t, String f) {
@@ -28,6 +29,7 @@ public abstract class Agenda implements Serializable, Comparable{
 		this.fecha_nacimiento=f;
 		this.cod=codigo;
 		codigo++;
+		this.datosRD=new ArrayList();
 		
 	}
 
@@ -113,13 +115,14 @@ public abstract class Agenda implements Serializable, Comparable{
 	public void setDatosRD(ArrayList<RedesSociales> datosRD) {
 		this.datosRD = datosRD;
 	}
+	
 
 	
 	@Override
 	public String toString() {
 		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
 				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + getOrigen() + ", cod=" + cod 
-				 + ", datosRD=" + datosRD + "]";
+				 + ", datosRD=" +getDatosRD() + "]";
 	}
 
 	@Override
@@ -128,10 +131,10 @@ public abstract class Agenda implements Serializable, Comparable{
 		return this.getNombre().compareTo(Ob1.getNombre());
 	}
 
-	public void add(RedesSociales datos) {
-		System.out.println("Has añadido esta informacion "+datos);
-		
-	}
+	
+
+
+	
 
 	
 	

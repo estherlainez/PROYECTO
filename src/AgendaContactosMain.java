@@ -24,14 +24,15 @@ public class AgendaContactosMain {
 			Scanner teclado=new Scanner (System.in);
 			
 			
-			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0;
-			String respuesta="",si="",no="";
+			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0,contador=0;
+			String respuesta="",si="",no="",nombre = null,nick = null;
 			
 			TreeSet <Agenda> contactos = new TreeSet<>();
-			RedesSociales datosRD = new RedesSociales(null, null);
-			ArrayList <RedesSociales> datosRED = new ArrayList<>();
-			Agenda p = null;
+
+			ArrayList Redes=new ArrayList<>();
+			
 			File file = new File("c:\\archivos\\miAgenda.dat");
+			Agenda p = null;
 			int i=0;
 			
 			if(file.exists()) {
@@ -87,31 +88,42 @@ public class AgendaContactosMain {
 					System.out.println("1.Añadir amigo");
 					teclado.nextLine();
 					Amigo a=null;
+					RedesSociales rd=null;
 					a=DatosAgenda.AñadirAmigo(teclado, contactos);
+					//rd=DatosAgenda.añadirRedesSociales(teclado);
 					System.out.println("Usted añadio "+a);
 				
 					afinidad=a.CalcularAfinidad(a.getOrigen(), a.getValorAfinidad());
 					System.out.println("La afinidad de su amigo es de "+afinidad);
+					
 					Agenda a1=(Amigo) a;
+					
+					boolean afirmacion=false;	
 					System.out.println("¿Tienes a este amigo en las redes sociales?");
 					System.out.println("Introduzca si o no");
 					teclado.nextLine();
-					respuesta=teclado.nextLine();
+					respuesta=teclado.nextLine();								
 					
-					do {
-						datosRD=DatosAgenda.añadirRedesSociales(contactos,teclado );
-						
-						datosRED.add(datosRD);
-						a1.add(datosRD);
-					
-						
+					if(respuesta==si) {
+						afirmacion=true;
+					}else if(respuesta==no) {
+						afirmacion=false;
+						System.out.println("Ya hemos guardado toda la informacion, ha sido un exito!");
+						}
+					//me falla el do while....
+					do{
+						rd=DatosAgenda.añadirRedesSociales(teclado);
+						Redes.add(rd);
+						System.out.println("usted ha añadido esta informacion: \n "+rd);
+						a1.setDatosRD(Redes);
+							
 						System.out.println("¿Alguna mas lo tienes?");
 						respuesta=teclado.nextLine();
+						contador++;
 						
-					}while(respuesta==si);
+					}while(afirmacion==true);
+					
 					System.out.println("Informacion del amigo ---> "+a1);
-					
-					
 					
 					break;
 				

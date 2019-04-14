@@ -29,7 +29,7 @@ public class DatosAgenda {
 		return x;
 	}	
 
-	public static RedesSociales añadirRedesSociales(TreeSet <Agenda>c ,Scanner teclado) {
+	public static RedesSociales añadirRedesSociales(Scanner teclado) {
 		
 		System.out.println("¿En que redes tienes a este contacto");
 		String nombre=teclado.nextLine();
