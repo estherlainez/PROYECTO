@@ -25,7 +25,7 @@ public class AgendaContactosMain {
 			
 			
 			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0,contador=0;
-			String respuesta="",si="",no="",nombre = null,nick = null;
+			String nombre = null,nick = null,respuesta="";
 			
 			TreeSet <Agenda> contactos = new TreeSet<>();
 
@@ -97,34 +97,37 @@ public class AgendaContactosMain {
 					
 					Agenda a1=(Amigo) a;
 					
-					boolean afirmacion=false;	
-					System.out.println("¿Tienes a este amigo en las redes sociales?");
-					respuesta=teclado.nextLine();
-					if(respuesta==si) {
-						afirmacion=true;
-					}else if(respuesta==no) {
-						afirmacion=false;
-						System.out.println("Ya hemos guardado toda la informacion, ha sido un exito!");
-						}
-					
-					do{
-						rd=DatosAgenda.añadirRedesSociales(teclado);
-						Redes.add(rd);
-						System.out.println("usted ha añadido esta informacion: \n "+rd);
-						a1.setDatosRD(Redes);
-							
-						System.out.println("¿Alguna mas lo tienes?");
-						respuesta=teclado.nextLine();
-						contador++;
 						
-					}while(afirmacion==true);
+					System.out.println("¿Tienes a este amigo en las redes sociales?");
+					System.out.println("Si lo tienes pulsa 1, si no pulsa 2");
+					boolean afirmacion=false;
+					int elige=teclado.nextInt();
+					if (elige==1) {
+						afirmacion=true;
+						System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
+					}else if(elige==2) {
+						afirmacion=false;
+						System.out.println("No tiene redes sociales el contacto+\nYa hemos guardado toda la informacion, ha sido un exito!");
+					}
+					System.out.println("ha elegido la opcion "+afirmacion);
 					
-					System.out.println("Informacion del amigo ---> "+a1);
+					do {
+							rd=DatosAgenda.añadirRedesSociales(teclado);
+							Redes.add(rd);
+							System.out.println("usted ha añadido esta informacion: \n "+rd);
+							a1.setDatosRD(Redes);
+								
+							System.out.println("Informacion del amigo ---> "+a1);
+							
+							System.out.println("¿Alguna mas lo tienes?");
+							elige=teclado.nextInt();
+							System.out.println("ha elegido la opcion "+afirmacion);
+					}while(afirmacion=true);
+					
+					System.out.println("ha elegido la opcion "+afirmacion);
+					
 					
 					break;
-				
-					
-				
 					
 				case 2:
 					System.out.println("2.Añadir familiar");
@@ -143,15 +146,10 @@ public class AgendaContactosMain {
 					
 						
 					System.out.println("¿Tienes a este familiar en las redes sociales?");
+					System.out.println("Si es que si marca 1 si es que no marca 2");
 					respuesta=teclado.nextLine();
-					afirmacion=false;
-					if(respuesta==si) {
-						afirmacion=true;
-					}else if(respuesta==no) {
-						afirmacion=false;
-						System.out.println("Ya hemos guardado toda la informacion, ha sido un exito!");
-						}
-					
+
+					/*
 					do{
 						rd=DatosAgenda.añadirRedesSociales(teclado);
 						Redes.add(rd);
@@ -160,10 +158,10 @@ public class AgendaContactosMain {
 							
 						System.out.println("¿Alguna mas lo tienes?");
 						respuesta=teclado.nextLine();
-						contador++;
 						
-					}while(afirmacion==true);
-					
+						
+					}while(respuesta==1) ;
+					*/
 					System.out.println("Informacion del amigo ---> "+f1);
 					
 					break;
@@ -217,6 +215,8 @@ public class AgendaContactosMain {
 			
 			}while(opcion!=4);
 		}
+
+	
 
 	}
 

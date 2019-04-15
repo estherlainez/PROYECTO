@@ -36,6 +36,31 @@ public abstract class Agenda implements Serializable, Comparable{
 	public abstract int CalcularAfinidad(int origen,int valor);
 	
 	
+
+	public ArrayList<RedesSociales> getDatosRD() {
+		return datosRD;
+	}
+
+	public void setDatosRD(ArrayList<RedesSociales> datosRD) {
+		this.datosRD = datosRD;
+	}
+	
+	public Agenda[] getContactos() {
+		return contactos;
+	}
+
+	public void setContactos(Agenda[] contactos) {
+		this.contactos = contactos;
+	}
+
+	public TreeSet<Agenda> getListacontactos() {
+		return listacontactos;
+	}
+
+	public void setListacontactos(TreeSet<Agenda> listacontactos) {
+		this.listacontactos = listacontactos;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -92,29 +117,7 @@ public abstract class Agenda implements Serializable, Comparable{
 		Agenda.codigo = codigo;
 	}
 
-	public Agenda[] getContactos() {
-		return contactos;
-	}
-
-	public void setContactos(Agenda[] contactos) {
-		this.contactos = contactos;
-	}
-
-	public TreeSet<Agenda> getListacontactos() {
-		return listacontactos;
-	}
-
-	public void setListacontactos(TreeSet<Agenda> listacontactos) {
-		this.listacontactos = listacontactos;
-	}
-
-	public ArrayList<RedesSociales> getDatosRD() {
-		return datosRD;
-	}
-
-	public void setDatosRD(ArrayList<RedesSociales> datosRD) {
-		this.datosRD = datosRD;
-	}
+	
 	
 
 	

@@ -73,9 +73,7 @@ public class DatosAgenda {
 		}
 	}
 	
-	
-	
-	
+
 	
 	
 }
