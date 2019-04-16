@@ -1,6 +1,12 @@
 
 public class Familiar extends Agenda{
 	int parentesco;
+	//Este constructor es de prueba por el codigo
+	public Familiar(String n, String a, String t, String f,int p) {
+		super(n, a, t, f);
+		this.parentesco=p;
+	}
+	
 	
 	public Familiar(int cod,String n,String a, String t, String f) {
 		super(cod,n,a,t,f);

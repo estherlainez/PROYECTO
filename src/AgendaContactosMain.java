@@ -14,7 +14,8 @@ import java.io.DataInputStream;
 	import java.util.Scanner;
 	import java.util.Set;
 	import java.util.TreeSet;
-	import java.util.Iterator;
+
+import java.util.Iterator;
 
 
 public class AgendaContactosMain {
@@ -79,9 +80,8 @@ public class AgendaContactosMain {
 				System.out.println("1.Añadir nuevo amigo");
 				System.out.println("2.Añadir nuevo familiar");
 				System.out.println("3.Mostrar la lista de contactos");
-				System.out.println("4.Buscar un contacto");
-				System.out.println("5.Borrar un contacto");
-				System.out.println("6.Guardar Contactos y Salir");
+				System.out.println("4.Borrar un contacto");
+				System.out.println("5.Guardar Contactos y Salir");
 				System.out.println("Introduzca la opcion a elegir");
 				opcion=teclado.nextInt();
 				
@@ -180,29 +180,23 @@ public class AgendaContactosMain {
 					
 					break;
 					
+				
 				case 4:
-					System.out.println("4.Buscar un contacto");
-					System.out.println("¿Que contacto busca? \nIntroduzca nombre: ");
-					teclado.nextLine();
-					String nombreBuscar=teclado.nextLine();
-
-					Agenda contactoBuscar= DatosAgenda.buscarContacto(nombreBuscar,contactos);					
-					System.out.println("Usted ha buscado: "+contactoBuscar.toString());
-					
-					break;
-	   
-				case 5:
-					System.out.println("5.Borrar un contacto");
+					System.out.println("4.Borrar un contacto");
 					System.out.println("¿Que contacto va a eliminar de la agenda? \nIntroduzca nombre: ");
 					teclado.nextLine();
 					String nombreBorrar=teclado.nextLine();
 
 					Agenda contactoBorrar= DatosAgenda.buscarContacto(nombreBorrar,contactos);					
 					boolean borrar=DatosAgenda.BorrarContacto(contactoBorrar, contactos);
-					
+
+					System.out.println("El contacto se borro, verifiquemos.... ");
+					 for (Agenda e:contactos) {
+                         System.out.println(e.toString());
+					 }
 					break;
 	   
-				case 6:
+				case 5:
 					System.out.println("4.Guardar los contactos");
 					try {
 						

@@ -19,6 +19,18 @@ public abstract class Agenda implements Serializable, Comparable{
 	TreeSet<Agenda> listacontactos;
 	ArrayList<RedesSociales> datosRD;
 
+	
+	//constructor de prueba para el codigo
+	public Agenda(String n,String a, String t, String f) {		
+		this.nombre=n;
+		this.apellidos=a;
+		this.telefono=t;
+		this.fecha_nacimiento=f;
+		this.cod=codigo;
+		codigo++;
+		this.datosRD=new ArrayList();
+			
+	}
 	 
 	
 	public Agenda(int cod,String n,String a, String t, String f) {
@@ -32,6 +44,8 @@ public abstract class Agenda implements Serializable, Comparable{
 		this.datosRD=new ArrayList();
 		
 	}
+
+	
 
 	public abstract int CalcularAfinidad(int origen,int valor);
 	
