@@ -9,14 +9,12 @@ import java.io.DataInputStream;
 	import java.io.ObjectInputStream;
 	import java.io.ObjectOutputStream;
 	import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+	import java.util.Collection;
+	import java.util.Collections;
 	import java.util.Scanner;
 	import java.util.Set;
 	import java.util.TreeSet;
-
-
-import java.util.Iterator;
+	import java.util.Iterator;
 
 
 public class AgendaContactosMain {
@@ -80,9 +78,10 @@ public class AgendaContactosMain {
 				System.out.println("MENU");
 				System.out.println("1.Añadir nuevo amigo");
 				System.out.println("2.Añadir nuevo familiar");
-				System.out.println("3.Listar Contactos");
-				System.out.println("4.Guardar Contactos y Salir");
-
+				System.out.println("3.Mostrar la lista de contactos");
+				System.out.println("4.Buscar un contacto");
+				System.out.println("5.Borrar un contacto");
+				System.out.println("6.Guardar Contactos y Salir");
 				System.out.println("Introduzca la opcion a elegir");
 				opcion=teclado.nextInt();
 				
@@ -176,14 +175,34 @@ public class AgendaContactosMain {
 					
 				
 				case 3:
-					System.out.println("3.Listar los contactos");
+					System.out.println("3.Mostrar la lista de contactos");
 					DatosAgenda.mostrtarListaContactos(contactos);
 					
 					break;
 					
-				
-	   
 				case 4:
+					System.out.println("4.Buscar un contacto");
+					System.out.println("¿Que contacto busca? \nIntroduzca nombre: ");
+					teclado.nextLine();
+					String nombreBuscar=teclado.nextLine();
+
+					Agenda contactoBuscar= DatosAgenda.buscarContacto(nombreBuscar,contactos);					
+					System.out.println("Usted ha buscado: "+contactoBuscar.toString());
+					
+					break;
+	   
+				case 5:
+					System.out.println("5.Borrar un contacto");
+					System.out.println("¿Que contacto va a eliminar de la agenda? \nIntroduzca nombre: ");
+					teclado.nextLine();
+					String nombreBorrar=teclado.nextLine();
+
+					Agenda contactoBorrar= DatosAgenda.buscarContacto(nombreBorrar,contactos);					
+					boolean borrar=DatosAgenda.BorrarContacto(contactoBorrar, contactos);
+					
+					break;
+	   
+				case 6:
 					System.out.println("4.Guardar los contactos");
 					try {
 						
@@ -205,7 +224,7 @@ public class AgendaContactosMain {
 					
 							p =(Agenda) ois.readObject();			
 							contactos.add(p);
-							System.out.println("Hemos guardado "+p);
+							System.out.println("Guardado: "+p);
 							indice ++;
 
 						}

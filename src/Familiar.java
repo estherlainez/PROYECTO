@@ -24,7 +24,7 @@ public class Familiar extends Agenda{
 		int afinidad=0;
 		if (gradoParentesco==1) {
 			afinidad=valor+10;
-			}else if(gradoParentesco==3)  {
+			}else if(gradoParentesco==2)  {
 				afinidad=valor+5;
 				}else if(gradoParentesco==3)  {
 					afinidad=valor+1;
@@ -33,6 +33,7 @@ public class Familiar extends Agenda{
 		return afinidad;
 	}
 
+	
 	@Override
 	public String toString() {
 		 return super.toString()+"Familiar [parentesco=" + parentesco + "]";

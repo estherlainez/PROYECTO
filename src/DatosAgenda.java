@@ -2,6 +2,8 @@ import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Set;
+
+
 public class DatosAgenda {
 
 	public static Amigo  AñadirAmigo(Scanner teclado,TreeSet <Agenda>c) {	
@@ -28,6 +30,7 @@ public class DatosAgenda {
 		c.add(x);
 		return x;
 	}	
+	
 
 	public static RedesSociales añadirRedesSociales(Scanner teclado) {
 		teclado.nextLine();
@@ -40,8 +43,7 @@ public class DatosAgenda {
 		String nick = teclado.nextLine();	
 		
 		RedesSociales datos=new RedesSociales(nombre,nick);
-		return datos;
-		
+		return datos;		
 	}
 	
 	
@@ -61,7 +63,6 @@ public class DatosAgenda {
 		int p=teclado.nextInt();
 		Familiar fam= new Familiar(cod,n,a,t,f,p);
 		c.add(fam);
-	
 		return fam;
 	}
 	
@@ -73,5 +74,27 @@ public class DatosAgenda {
 		}
 	}
 	
+	
+	public static  Agenda buscarContacto(String n, TreeSet <Agenda> a) {
 
+		for(Agenda d: a) {
+			if(d.getNombre().equals(n)) {
+				return d;
+			}
+		}
+		return null;
+	}
+	
+	
+	public static boolean BorrarContacto(Agenda d,TreeSet <Agenda> a) {
+		
+		boolean borrar=false;
+		if(a.contains(d)) {
+			a.remove(d);
+			borrar=true;		
+		}
+		
+		return borrar;		
+	}
+	
 }
