@@ -1,8 +1,9 @@
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class RedesSociales {
+public class RedesSociales implements Serializable{
 
 	String nombreRed;
 	String nickContacto;

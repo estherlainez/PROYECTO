@@ -14,7 +14,9 @@ import java.util.Collections;
 	import java.util.Scanner;
 	import java.util.Set;
 	import java.util.TreeSet;
-	import java.util.Iterator;
+
+
+import java.util.Iterator;
 
 
 public class AgendaContactosMain {
@@ -25,14 +27,17 @@ public class AgendaContactosMain {
 			
 			
 			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0,contador=0;
-			String nombre = null,nick = null,respuesta="";
-			
+			String nombre = null,nick = null;
+			String elige="si";
+			String elige1="no";
+			String respuestaRedes="";
 			TreeSet <Agenda> contactos = new TreeSet<>();
 
 			ArrayList Redes=new ArrayList<>();
 			
 			File file = new File("c:\\archivos\\miAgenda.dat");
 			Agenda p = null;
+			RedesSociales r= null;
 			int i=0;
 			
 			if(file.exists()) {
@@ -43,6 +48,7 @@ public class AgendaContactosMain {
 						p =(Agenda) stream.readObject();			
 						contactos.add(p);
 						indice ++;
+
 
 					}
 				}catch(EOFException e) {
@@ -82,8 +88,6 @@ public class AgendaContactosMain {
 				
 				switch(opcion) {
 				
-				
-				
 				case 1:
 					System.out.println("1.Añadir amigo");
 					teclado.nextLine();
@@ -96,40 +100,37 @@ public class AgendaContactosMain {
 					System.out.println("La afinidad de su amigo es de "+afinidad);
 					
 					Agenda a1=(Amigo) a;
-					
-						
+											
 					System.out.println("¿Tienes a este amigo en las redes sociales?");
-					System.out.println("Si lo tienes pulsa 1, si no pulsa 2");
-					boolean afirmacion=false;
-					int elige=teclado.nextInt();
-					if (elige==1) {
-						afirmacion=true;
-						System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
-					}else if(elige==2) {
-						afirmacion=false;
-						System.out.println("No tiene redes sociales el contacto+\nYa hemos guardado toda la informacion, ha sido un exito!");
-					}
-					System.out.println("ha elegido la opcion "+afirmacion);
+					System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
+					teclado.nextLine();
+					respuestaRedes=teclado.nextLine();
 					
-					do {
-							rd=DatosAgenda.añadirRedesSociales(teclado);
+					while(respuestaRedes.equals("si")) {
+						rd=DatosAgenda.añadirRedesSociales(teclado);
 							Redes.add(rd);
 							System.out.println("usted ha añadido esta informacion: \n "+rd);
 							a1.setDatosRD(Redes);
 								
 							System.out.println("Informacion del amigo ---> "+a1);
+								
+							System.out.println("¿Tienes al contacto en alguna red mas?");
 							
-							System.out.println("¿Alguna mas lo tienes?");
-							elige=teclado.nextInt();
-							System.out.println("ha elegido la opcion "+afirmacion);
-					}while(afirmacion=true);
+							respuestaRedes=teclado.nextLine();							
+						
+					}
+				
+					System.out.println("Ya hemos añadido toda informacion, gracias!!!");
+					System.out.println(a1.toString());
 					
-					System.out.println("ha elegido la opcion "+afirmacion);
-					
+					System.out.println("Informacion del amigo ---> "+a1);
+					 for (Agenda e:contactos) {
+                         System.out.println(e.toString());
+					 }
 					
 					break;
-					
-				case 2:
+
+					case 2:
 					System.out.println("2.Añadir familiar");
 					Familiar f=null;
 					f=DatosAgenda.añadirFamiliar(teclado, contactos);
@@ -143,26 +144,33 @@ public class AgendaContactosMain {
 					System.out.println("La afinidad de su familiar es de "+afinidad);
 					
 					Agenda f1=(Familiar) f;
-					
 						
 					System.out.println("¿Tienes a este familiar en las redes sociales?");
-					System.out.println("Si es que si marca 1 si es que no marca 2");
-					respuesta=teclado.nextLine();
-
-					/*
-					do{
+					System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
+					teclado.nextLine();
+					respuestaRedes=teclado.nextLine();
+					
+					while(respuestaRedes.equals("si")) {
 						rd=DatosAgenda.añadirRedesSociales(teclado);
-						Redes.add(rd);
-						System.out.println("usted ha añadido esta informacion: \n "+rd);
-						f1.setDatosRD(Redes);
+							Redes.add(rd);
+							System.out.println("usted ha añadido esta informacion: \n "+rd);
+							f1.setDatosRD(Redes);
+								
+							System.out.println("Informacion del amigo ---> "+f1);
+								
+							System.out.println("¿Tienes al contacto en alguna red mas?");
 							
-						System.out.println("¿Alguna mas lo tienes?");
-						respuesta=teclado.nextLine();
+							respuestaRedes=teclado.nextLine();							
 						
-						
-					}while(respuesta==1) ;
-					*/
+					}
+				
+					System.out.println("Ya hemos añadido toda informacion, gracias!!!");
+					System.out.println(f1.toString());
+					
 					System.out.println("Informacion del amigo ---> "+f1);
+					 for (Agenda e:contactos) {
+                         System.out.println(e.toString());
+					 }
 					
 					break;
 					
