@@ -132,9 +132,6 @@ public abstract class Agenda implements Serializable, Comparable{
 	}
 
 	
-	
-
-	
 	@Override
 	public String toString() {
 		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
@@ -142,6 +139,7 @@ public abstract class Agenda implements Serializable, Comparable{
 				 + ", datosRD=" +getDatosRD() + "]";
 	}
 
+	
 	@Override
 	public int compareTo(Object o1) {
 		Agenda Ob1 = (Agenda)o1;		

@@ -5,7 +5,6 @@ public class Amigo extends Agenda {
 	
 	int origen;//sera aficion infancia o trabajo
 	int valorAfinidad;//Este sera de 0 a 10 segun la confianza
-		
 	
 	//Este constructor es de prueba por lo del codigo
 	public Amigo(String n,String a, String t, String f,int o,int v) {
@@ -25,7 +24,8 @@ public class Amigo extends Agenda {
 		this.origen=o;
 		this.valorAfinidad=v;	
 	}
-
+	
+	
 	public int getOrigen() {
 		return origen;
 	}
@@ -55,10 +55,17 @@ public class Amigo extends Agenda {
 	}
 
 	
+
 	@Override
 	public String toString() {
-		return super.toString()+ "Amigo [valorAfinidad=" + getValorAfinidad() + "]";
+		int afinidad=CalcularAfinidad(getOrigen(), getValorAfinidad());
+		return "Amigo [Nombre=" + nombre + ", Apellidos=" + apellidos + ",\n Telefono=" + telefono
+				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de codigo =" + cod  + ", Origen=" + getOrigen()
+				 + ", Confianza en su amigo=" + getValorAfinidad() +", Afinidad del amigo=" + afinidad 
+				 + ",\n Redes Sociales del contacto=" +getDatosRD()  +"]\n";
 	}
+	
+	
 
 	
 }

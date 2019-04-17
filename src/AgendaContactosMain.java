@@ -9,13 +9,15 @@ import java.io.DataInputStream;
 	import java.io.ObjectInputStream;
 	import java.io.ObjectOutputStream;
 	import java.util.ArrayList;
+	import java.util.Arrays;
 	import java.util.Collection;
 	import java.util.Collections;
+	import java.util.Comparator;
 	import java.util.Scanner;
 	import java.util.Set;
 	import java.util.TreeSet;
-
-import java.util.Iterator;
+	import java.util.Iterator;
+	import java.util.List;
 
 
 public class AgendaContactosMain {
@@ -32,7 +34,7 @@ public class AgendaContactosMain {
 			String respuestaRedes="";
 			TreeSet <Agenda> contactos = new TreeSet<>();
 
-			ArrayList Redes=new ArrayList<>();
+			
 			
 			File file = new File("c:\\archivos\\miAgenda.dat");
 			Agenda p = null;
@@ -59,29 +61,35 @@ public class AgendaContactosMain {
 
 			}else {
 			
-				Amigo a= new Amigo (1,"Rosa","Jimenez","615388653","14-05-80",1,9);
+				Amigo a= new Amigo ("Rosa","Jimenez","615388653","14-05-80",1,9);
 				contactos.add (a);
 
-				Amigo s= new Amigo(2,"Jorge","Royo","665786512","31-05-76",1,9);
+				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",1,9);
 				contactos.add(s);
 				
-				Agenda f= new Familiar(3,"Maria","Mompel","679453267","18-12-80",3);			
+				Agenda f= new Familiar("Maria","Mompel","679453267","18-12-80",3,8);			
 				contactos.add(f);
 				
-				Familiar g= new Familiar(4,"Roberto","Navarro","669098986","14-04-1974",2);
+				Familiar g= new Familiar("Roberto","Navarro","669098986","14-04-1974",2,8);
 				contactos.add(g);
-				
-
 			}
 		
 			
+			
 			do {
-				System.out.println("MENU");
-				System.out.println("1.Añadir nuevo amigo");
-				System.out.println("2.Añadir nuevo familiar");
-				System.out.println("3.Mostrar la lista de contactos");
-				System.out.println("4.Borrar un contacto");
-				System.out.println("5.Guardar Contactos y Salir");
+				System.out.println(" _______________________________________________________");
+				System.out.println("|                                                       |");
+				System.out.println("|                                                       |");
+				System.out.println("|               AGENDA DE CONTACTOS                     |");
+				System.out.println("|                    MENU                               |");
+				System.out.println("|             1.Añadir nuevo amigo                      |");
+				System.out.println("|             2.Añadir nuevo familiar                   |");
+				System.out.println("|             3.Mostrar la lista de contactos           |");
+				System.out.println("|             4.Guardar Contactos y Salir               |");
+				System.out.println("|                                                       |");
+				System.out.println("|                                                       |");
+				System.out.println("|_______________________________________________________|");
+				System.out.println("");
 				System.out.println("Introduzca la opcion a elegir");
 				opcion=teclado.nextInt();
 				
@@ -94,9 +102,6 @@ public class AgendaContactosMain {
 					RedesSociales rd=null;
 					a=DatosAgenda.AñadirAmigo(teclado, contactos);
 					System.out.println("Usted añadio "+a);
-				
-					afinidad=a.CalcularAfinidad(a.getOrigen(), a.getValorAfinidad());
-					System.out.println("La afinidad de su amigo es de "+afinidad);
 					
 					Agenda a1=(Amigo) a;
 											
@@ -105,27 +110,27 @@ public class AgendaContactosMain {
 					teclado.nextLine();
 					respuestaRedes=teclado.nextLine();
 					
+					ArrayList RedesA=new ArrayList<>();
 					while(respuestaRedes.equals("si")) {
-						rd=DatosAgenda.añadirRedesSociales(teclado);
-							Redes.add(rd);
-							System.out.println("usted ha añadido esta informacion: \n "+rd);
-							a1.setDatosRD(Redes);
-								
-							System.out.println("Informacion del amigo ---> "+a1);
-								
-							System.out.println("¿Tienes al contacto en alguna red mas?");
+							rd=DatosAgenda.añadirRedesSociales(teclado);
 							
+							RedesA.add(rd);
+							System.out.println("usted ha añadido esta informacion: \n "+rd);
+							a1.setDatosRD(RedesA);	
+					
+							System.out.println("¿Tienes al contacto en alguna red mas?");	
 							respuestaRedes=teclado.nextLine();							
 						
 					}
 				
-					System.out.println("Ya hemos añadido toda informacion, gracias!!!");
-					System.out.println(a1.toString());
+					System.out.println("Conatacto añadido!!!\n Informacion del amigo ---> "+a1+"\n");
 					
-					System.out.println("Informacion del amigo ---> "+a1);
+					
+					System.out.println("Verifiquemos que ha sido añadido correctamente \n");
 					 for (Agenda e:contactos) {
                          System.out.println(e.toString());
 					 }
+					
 					
 					break;
 
@@ -135,38 +140,27 @@ public class AgendaContactosMain {
 					f=DatosAgenda.añadirFamiliar(teclado, contactos);
 					System.out.println("Usted añadio "+f);
 					
-					System.out.println("Valoremos la afinidad y el aprecio de familia...");				
-				
-					System.out.println("¿Cual es su grado de confianza con este familiar?");
-					valor=teclado.nextInt();
-					afinidad=f.CalcularAfinidad(f.getParentesco(), valor);
-					System.out.println("La afinidad de su familiar es de "+afinidad);
-					
 					Agenda f1=(Familiar) f;
 						
 					System.out.println("¿Tienes a este familiar en las redes sociales?");
 					System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
 					teclado.nextLine();
 					respuestaRedes=teclado.nextLine();
-					
+					ArrayList RedesF=new ArrayList<>();
 					while(respuestaRedes.equals("si")) {
 						rd=DatosAgenda.añadirRedesSociales(teclado);
-							Redes.add(rd);
-							System.out.println("usted ha añadido esta informacion: \n "+rd);
-							f1.setDatosRD(Redes);
-								
-							System.out.println("Informacion del amigo ---> "+f1);
-								
-							System.out.println("¿Tienes al contacto en alguna red mas?");
 							
-							respuestaRedes=teclado.nextLine();							
+							RedesF.add(rd);
+							System.out.println("usted ha añadido esta informacion: \n "+rd);
+							f1.setDatosRD(RedesF);							
 						
+							System.out.println("¿Tienes al contacto en alguna red mas?");							
+							respuestaRedes=teclado.nextLine();												
 					}
 				
-					System.out.println("Ya hemos añadido toda informacion, gracias!!!");
-					System.out.println(f1.toString());
 					
-					System.out.println("Informacion del amigo ---> "+f1);
+					System.out.println("Conatacto añadido!!!\n Informacion del familiar ---> "+f1+"\n");
+					System.out.println("Verifiquemos que ha sido añadido correctamente \n");
 					 for (Agenda e:contactos) {
                          System.out.println(e.toString());
 					 }
@@ -179,24 +173,8 @@ public class AgendaContactosMain {
 					DatosAgenda.mostrtarListaContactos(contactos);
 					
 					break;
-					
 				
 				case 4:
-					System.out.println("4.Borrar un contacto");
-					System.out.println("¿Que contacto va a eliminar de la agenda? \nIntroduzca nombre: ");
-					teclado.nextLine();
-					String nombreBorrar=teclado.nextLine();
-
-					Agenda contactoBorrar= DatosAgenda.buscarContacto(nombreBorrar,contactos);					
-					boolean borrar=DatosAgenda.BorrarContacto(contactoBorrar, contactos);
-
-					System.out.println("El contacto se borro, verifiquemos.... ");
-					 for (Agenda e:contactos) {
-                         System.out.println(e.toString());
-					 }
-					break;
-	   
-				case 5:
 					System.out.println("4.Guardar los contactos");
 					try {
 						
@@ -232,6 +210,10 @@ public class AgendaContactosMain {
 					System.out.println("Hasta pronto!");
 					break;
 				
+					default:
+						System.out.println("La opcion elegida es incorrecta");
+					
+						
 				}
 			
 			}while(opcion!=4);
