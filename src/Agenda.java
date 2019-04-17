@@ -13,8 +13,8 @@ public abstract class Agenda implements Serializable, Comparable{
 	String telefono;
 	String fecha_nacimiento;
 	int origen;
-	int cod=1;
-	protected static int codigo;
+	int id;
+	protected static int indice=1;
 	Agenda contactos[];
 	TreeSet<Agenda> listacontactos;
 	ArrayList<RedesSociales> datosRD;
@@ -26,21 +26,21 @@ public abstract class Agenda implements Serializable, Comparable{
 		this.apellidos=a;
 		this.telefono=t;
 		this.fecha_nacimiento=f;
-		this.cod=codigo;
-		codigo++;
+		this.id=indice;
+		indice++;
 		this.datosRD=new ArrayList();
 			
 	}
 	 
 	
-	public Agenda(int cod,String n,String a, String t, String f) {
+	public Agenda(int i,String n,String a, String t, String f) {
 		
 		this.nombre=n;
 		this.apellidos=a;
 		this.telefono=t;
 		this.fecha_nacimiento=f;
-		this.cod=codigo;
-		codigo++;
+		this.id=indice;
+		indice++;
 		this.datosRD=new ArrayList();
 		
 	}
@@ -115,27 +115,27 @@ public abstract class Agenda implements Serializable, Comparable{
 		this.origen = origen;
 	}
 
-	public int getCod() {
-		return cod;
+	public int getId() {
+		return id;
 	}
 
-	public void setCod(int cod) {
-		this.cod = cod;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public static int getCodigo() {
-		return codigo;
+	public static int getIndice() {
+		return indice;
 	}
 
-	public static void setCodigo(int codigo) {
-		Agenda.codigo = codigo;
+	public static void setIndice(int indice) {
+		Agenda.indice = indice;
 	}
 
 	
 	@Override
 	public String toString() {
 		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + getOrigen() + ", cod=" + cod 
+				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + getOrigen() + ", Id=" + id 
 				 + ", datosRD=" +getDatosRD() + "]";
 	}
 

@@ -35,7 +35,7 @@ public class DatosAgenda {
 	
 
 	public static RedesSociales añadirRedesSociales(Scanner teclado) {
-		teclado.nextLine();
+		
 		System.out.println("¿En que redes tienes a este contacto?");
 		
 		String nombre=teclado.nextLine();
@@ -77,7 +77,6 @@ public class DatosAgenda {
 			System.out.println(e.toString());
 		}
 	}
-	
 	
 	
 	

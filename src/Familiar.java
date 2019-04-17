@@ -61,7 +61,7 @@ public class Familiar extends Agenda{
 	public String toString() {
 		int afinidad=CalcularAfinidad(getParentesco(), getConfianza());
 		return "Familiar [Nombre=" + nombre + ", Apellidos=" + apellidos + ",\n Telefono=" + telefono
-				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de codigo =" + cod  + ", Parentesco=" + getParentesco()+
+				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de codigo =" + id  + ", Parentesco=" + getParentesco()+
 				  ", Valoracion del familiar=" + confianza + ", Afinidad del familiar=" + afinidad +
 				  ", \n Redes sociales del contacto=" +getDatosRD() +"]\n";
 	}

@@ -60,7 +60,7 @@ public class Amigo extends Agenda {
 	public String toString() {
 		int afinidad=CalcularAfinidad(getOrigen(), getValorAfinidad());
 		return "Amigo [Nombre=" + nombre + ", Apellidos=" + apellidos + ",\n Telefono=" + telefono
-				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de codigo =" + cod  + ", Origen=" + getOrigen()
+				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de indice =" + id  + ", Origen=" + getOrigen()
 				 + ", Confianza en su amigo=" + getValorAfinidad() +", Afinidad del amigo=" + afinidad 
 				 + ",\n Redes Sociales del contacto=" +getDatosRD()  +"]\n";
 	}
