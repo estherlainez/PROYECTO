@@ -38,8 +38,7 @@ public class AgendaContactosMain {
 			
 			File file = new File("c:\\archivos\\miAgenda.dat");
 			Agenda p = null;
-			RedesSociales r= null;
-			int i=0;
+		
 			
 			if(file.exists()) {
 				try {
@@ -55,7 +54,7 @@ public class AgendaContactosMain {
 				}catch(EOFException e) {
 					System.out.println("Fin de la agenda. Tenemos en la agenda "+contactos.size()+" contactos");
 				}catch(IOException ex) {
-					System.out.println("Error");
+					System.out.println("Error. Algo nos ha fallado");
 			
 				}
 
@@ -77,18 +76,21 @@ public class AgendaContactosMain {
 			
 			
 			do {
-				System.out.println(" _______________________________________________________");
-				System.out.println("|                                                       |");
-				System.out.println("|                                                       |");
-				System.out.println("|               AGENDA DE CONTACTOS                     |");
-				System.out.println("|                    MENU                               |");
-				System.out.println("|             1.Añadir nuevo amigo                      |");
-				System.out.println("|             2.Añadir nuevo familiar                   |");
-				System.out.println("|             3.Mostrar la lista de contactos           |");
-				System.out.println("|             4.Guardar Contactos y Salir               |");
-				System.out.println("|                                                       |");
-				System.out.println("|                                                       |");
-				System.out.println("|_______________________________________________________|");
+				System.out.println(" ______________________________________________________________");
+				System.out.println("|                                                              |");
+				System.out.println("|                                                              |");
+				System.out.println("|               AGENDA DE CONTACTOS                            |");
+				System.out.println("|                    MENU                                      |");
+				System.out.println("|         1.Añadir nuevo amigo                                 |");
+				System.out.println("|         2.Añadir nuevo familiar                              |");
+				System.out.println("|         3.Mostrar la lista de contactos                      |");
+				System.out.println("|         4.Mostrar la lista de contactos  por id              |");
+				System.out.println("|         5.Buscar un contacto                                 |");
+				System.out.println("|         6.Borrar un contacto                                 |");
+				System.out.println("|         7.Modificar un contacto                              |");
+				System.out.println("|         8.Guardar los contactos                              |");
+				System.out.println("|                                                              |");
+				System.out.println("|______________________________________________________________|");
 				System.out.println("");
 				System.out.println("Introduzca la opcion a elegir");
 				opcion=teclado.nextInt();
@@ -174,9 +176,41 @@ public class AgendaContactosMain {
 					
 					break;
 				
+					
 				case 4:
-					System.out.println("4.Guardar los contactos");
-					try {
+					System.out.println("4.Mostrar la lista de contactos ordenados por id");
+					DatosAgenda.mostrtarListaContactosporId(contactos);
+					
+					
+					break;
+				case 5:
+					System.out.println("5.Buscar un contacto");
+					System.out.println("Introduzca datos a buscar (Nombre o Apellido):");
+					teclado.nextLine();
+					String nom=teclado.nextLine();
+					Agenda busqueda=DatosAgenda.buscarContacto(nom, contactos); 
+					System.out.println("Ha buscado: "+busqueda);
+					break;
+					
+				case 6:
+					System.out.println("6.Eliminar un contacto");
+					System.out.println("Introduzca datos del contacto que quiere eliminar:");
+					teclado.nextLine();
+					nom=teclado.nextLine();
+					Agenda contactoEliminar=null;
+					contactoEliminar = DatosAgenda.buscarContacto(nom, contactos);
+					DatosAgenda.eliminarContacto(contactoEliminar, contactos);
+					
+					
+					 
+					break;
+				case 7:
+					System.out.println("7.Modificar un contacto");
+					Agenda mod= DatosAgenda.ModificarDatos(teclado, contactos);
+					break;
+				case 8:
+					System.out.println("7.Guardar los contactos");
+					try { 
 						
 						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("c:\\archivos\\miAgenda.dat"));
 							
@@ -209,6 +243,9 @@ public class AgendaContactosMain {
 					
 					System.out.println("Hasta pronto!");
 					break;
+					
+				
+					
 				
 					default:
 						System.out.println("La opcion elegida es incorrecta");
@@ -216,7 +253,7 @@ public class AgendaContactosMain {
 						
 				}
 			
-			}while(opcion!=4);
+			}while(opcion!=8);
 		}
 
 	

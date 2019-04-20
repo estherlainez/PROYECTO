@@ -1,21 +1,21 @@
 
 public class Familiar extends Agenda{
 	int parentesco;
-	int confianza;
+	
 	//Este constructor es de prueba por el codigo
 	public Familiar(String n, String a, String t, String f,int p,int v) {
-		super(n, a, t, f);
+		super(n, a, t, f,v);
 		this.parentesco=p;
-		this.confianza=v;
 	}
 	
-	
-	public Familiar(int cod,String n,String a, String t, String f) {
-		super(cod,n,a,t,f);
+	 
+	public Familiar(int cod,String n,String a, String t, String f,int v) {
+		super(cod,n,a,t,f,v);
 	}
 
-	public Familiar(int cod,String n, String a, String t, String f,int p) {
-		super(cod,n, a, t, f);
+	//constructor con todos los campos incluidos valores que pedimos al usuario
+	public Familiar(int cod,String n, String a, String t, String f,int p,int v) {
+		super(cod,n, a, t, f, v);
 		this.parentesco=p;
 	}
 
@@ -31,14 +31,7 @@ public class Familiar extends Agenda{
 	}
 
 
-	public int getConfianza() {
-		return confianza;
-	}
-
-
-	public void setConfianza(int confianza) {
-		this.confianza = confianza;
-	}
+	
 
 
 	public int CalcularAfinidad(int gradoParentesco, int valor) {
@@ -59,10 +52,10 @@ public class Familiar extends Agenda{
 
 	@Override
 	public String toString() {
-		int afinidad=CalcularAfinidad(getParentesco(), getConfianza());
+		int afinidad=CalcularAfinidad(getParentesco(), getValorAfinidad());
 		return "Familiar [Nombre=" + nombre + ", Apellidos=" + apellidos + ",\n Telefono=" + telefono
 				+ ", Fecha Nacimiento=" + fecha_nacimiento + ",\n Numero de codigo =" + id  + ", Parentesco=" + getParentesco()+
-				  ", Valoracion del familiar=" + confianza + ", Afinidad del familiar=" + afinidad +
+				  ", Valoracion del familiar=" + getValorAfinidad() + ", Afinidad del familiar=" + afinidad +
 				  ", \n Redes sociales del contacto=" +getDatosRD() +"]\n";
 	}
 

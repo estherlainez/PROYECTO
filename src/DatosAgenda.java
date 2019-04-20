@@ -1,6 +1,7 @@
 import java.util.TreeSet;
-
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.NavigableMap;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -32,6 +33,7 @@ public class DatosAgenda {
 		
 		return x;
 	}	
+	
 	
 
 	public static RedesSociales añadirRedesSociales(Scanner teclado) {
@@ -78,6 +80,101 @@ public class DatosAgenda {
 		}
 	}
 	
+	public static void mostrtarListaContactosporId(TreeSet<Agenda> c) {
+		ArrayList <Agenda> contactos1 = new ArrayList<Agenda>();
+		contactos1.addAll(c);
+	  
+		Collections.sort(contactos1, new ComparaId());
+		
+		for (Agenda e:contactos1) {
+            System.out.println(e.toString());
+		 }
+		
+	}
 	
+	public static Agenda buscarContacto(String n,TreeSet <Agenda> t) {
+		
+		for(Agenda a: t) {
+			if(a.getNombre().equals(n)||a.getApellidos().equals(n)) {
+				return a;
+			}
+		}
+		return null;
+	}
+	
+
+	public static void eliminarContacto(Agenda a, TreeSet <Agenda> t) {
+		
+		if(t.contains(a)) {
+			t.remove(a);
+			System.out.println("El contacto fue borrado");
+		}
+		
+		System.out.println("Verificamos que el contacto elegido ya no esta...\n");
+		 for (Agenda e:t) {
+            System.out.println(e.toString());
+		 }
+		
+	}
+	
+	public static Agenda ModificarDatos( Scanner teclado, TreeSet<Agenda>t) {
+
+		System.out.println("Que contacto  va a modificar?");
+		teclado.nextLine();
+		String nombreModificar=teclado.nextLine();
+		System.out.println("Introduzca los nuevos datos.\nNombre");
+		String nombreNuevo=teclado.nextLine();
+		System.out.println("Apellidos");
+		String apellidoNuevo=teclado.nextLine();
+		System.out.println("Telefono");
+		String telefonoNuevo=teclado.nextLine();
+		System.out.println("Fecha Nacimiento");
+		String fechaNueva=teclado.nextLine();
+		System.out.println("Origen");
+		int nuevoOrigen=teclado.nextInt();
+		System.out.println("Grado de confianza o afinidad");
+		int nuevaAfinidad=teclado.nextInt();
+		System.out.println("NuevoParentesco");
+		int nuevoParentesco=teclado.nextInt();
+		System.out.println("Tenia informacion de las redes sociales?");
+		teclado.nextLine();
+		String res=teclado.nextLine(),si="";
+		ArrayList nuevosDatos=new ArrayList<>();
+		while(res.equals("si")){
+			System.out.println("Nombre Red");
+			String red=teclado.nextLine();
+			System.out.println("Nick contacto");
+			String nick=teclado.nextLine();
+			RedesSociales r=new RedesSociales(red,nick);
+			nuevosDatos.add(r);
+			System.out.println("¿Alguna mas?");
+			 res=teclado.nextLine();
+		}
+		
+		Agenda contactoModificar=null;
+		String amigo="",familiar="",cercania="";
+		for(Agenda d: t) {
+			contactoModificar=d;
+			if(d.getNombre().equals(nombreModificar)) {		
+				d.setNombre(nombreNuevo);
+				d.setApellidos(apellidoNuevo);
+				d.setTelefono(telefonoNuevo);
+				d.setFecha_nacimiento(fechaNueva);
+				d.setValorAfinidad(nuevaAfinidad);
+				d.setDatosRD(nuevosDatos);
+				if(cercania.equals(amigo)) {
+					((Amigo) d).setOrigen(nuevoOrigen);
+					
+				}else if(cercania.equals(familiar)) {
+					((Familiar) d).setParentesco(nuevoParentesco);
+					
+				}
+			}
+		}
+		return contactoModificar;
+		
+	}
+
+
 	
 }

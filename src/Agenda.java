@@ -12,33 +12,35 @@ public abstract class Agenda implements Serializable, Comparable{
 	String apellidos;
 	String telefono;
 	String fecha_nacimiento;
-	int origen;
+	int valorAfinidad;
 	int id;
 	protected static int indice=1;
-	Agenda contactos[];
-	TreeSet<Agenda> listacontactos;
+	Agenda listacontactos[];
+	TreeSet<Agenda> contactos;
 	ArrayList<RedesSociales> datosRD;
 
 	
 	//constructor de prueba para el codigo
-	public Agenda(String n,String a, String t, String f) {		
+	public Agenda(String n,String a, String t, String f,int v) {		
 		this.nombre=n;
 		this.apellidos=a;
 		this.telefono=t;
 		this.fecha_nacimiento=f;
+		this.valorAfinidad=v;
 		this.id=indice;
 		indice++;
 		this.datosRD=new ArrayList();
 			
 	}
 	 
-	
-	public Agenda(int i,String n,String a, String t, String f) {
+	//constructor con todos los atributos
+	public Agenda(int i,String n,String a, String t, String f,int v) {
 		
 		this.nombre=n;
 		this.apellidos=a;
 		this.telefono=t;
 		this.fecha_nacimiento=f;
+		this.valorAfinidad=v;
 		this.id=indice;
 		indice++;
 		this.datosRD=new ArrayList();
@@ -59,20 +61,21 @@ public abstract class Agenda implements Serializable, Comparable{
 		this.datosRD = datosRD;
 	}
 	
-	public Agenda[] getContactos() {
+	public int getValorAfinidad() {
+		return valorAfinidad;
+	}
+
+
+	public void setValorAfinidad(int valorAfinidad) {
+		this.valorAfinidad = valorAfinidad;
+	}
+
+	public TreeSet<Agenda> getContactos() {
 		return contactos;
 	}
 
-	public void setContactos(Agenda[] contactos) {
+	public void setListacontactos(TreeSet<Agenda> contactos) {
 		this.contactos = contactos;
-	}
-
-	public TreeSet<Agenda> getListacontactos() {
-		return listacontactos;
-	}
-
-	public void setListacontactos(TreeSet<Agenda> listacontactos) {
-		this.listacontactos = listacontactos;
 	}
 	
 	public String getNombre() {
@@ -106,14 +109,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
-
-	public int getOrigen() {
-		return origen;
-	}
-
-	public void setOrigen(int origen) {
-		this.origen = origen;
-	}
+	
 
 	public int getId() {
 		return id;
@@ -135,7 +131,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	@Override
 	public String toString() {
 		return "Agenda [nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono
-				+ ", fecha_nacimiento=" + fecha_nacimiento + ", origen=" + getOrigen() + ", Id=" + id 
+				+ ", fecha_nacimiento=" + fecha_nacimiento  + ", Id=" + id 
 				 + ", datosRD=" +getDatosRD() + "]";
 	}
 
@@ -146,11 +142,6 @@ public abstract class Agenda implements Serializable, Comparable{
 		return this.getNombre().compareTo(Ob1.getNombre());
 	}
 
-	
-
-
-	
-
-	
+		
 	
 }
