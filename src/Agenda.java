@@ -15,7 +15,6 @@ public abstract class Agenda implements Serializable, Comparable{
 	int valorAfinidad;
 	int id;
 	protected static int indice=1;
-	Agenda listacontactos[];
 	TreeSet<Agenda> contactos;
 	ArrayList<RedesSociales> datosRD;
 
@@ -74,7 +73,7 @@ public abstract class Agenda implements Serializable, Comparable{
 		return contactos;
 	}
 
-	public void setListacontactos(TreeSet<Agenda> contactos) {
+	public void setContactos(TreeSet<Agenda> contactos) {
 		this.contactos = contactos;
 	}
 	

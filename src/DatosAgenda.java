@@ -38,15 +38,13 @@ public class DatosAgenda {
 
 	public static RedesSociales añadirRedesSociales(Scanner teclado) {
 		
-		System.out.println("¿En que redes tienes a este contacto?");
-		
-		String nombre=teclado.nextLine();
-		
-		System.out.println("¿Con que nombre lo tienes?");
-		
+		System.out.println("¿En que redes tienes a este contacto?");	
+		String nombre=teclado.nextLine();		
+		System.out.println("¿Con que nombre lo tienes?");		
 		String nick = teclado.nextLine();	
 		
 		RedesSociales datos=new RedesSociales(nombre,nick);
+		
 		return datos;		
 	}
 	
@@ -67,8 +65,10 @@ public class DatosAgenda {
 		System.out.println("¿Cual es su grado de satisfacion o de confianza con este familiar");
 		System.out.println("Introduzca valoracion de 1 a 10");
 		int v=teclado.nextInt();
+		
 		Familiar fam= new Familiar(n,a,t,f,p,v);
 		c.add(fam);
+		
 		return fam;
 	}
 	
@@ -138,8 +138,10 @@ public class DatosAgenda {
 		int nuevoParentesco=teclado.nextInt();
 		System.out.println("Tenia informacion de las redes sociales?");
 		teclado.nextLine();
+		
 		String res=teclado.nextLine(),si="";
 		ArrayList nuevosDatos=new ArrayList<>();
+		
 		while(res.equals("si")){
 			System.out.println("Nombre Red");
 			String red=teclado.nextLine();
@@ -153,6 +155,7 @@ public class DatosAgenda {
 		
 		Agenda contactoModificar=null;
 		String amigo="",familiar="",cercania="";
+		
 		for(Agenda d: t) {
 			contactoModificar=d;
 			if(d.getNombre().equals(nombreModificar)) {		

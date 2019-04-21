@@ -1,4 +1,4 @@
-import java.io.DataInputStream;
+	import java.io.DataInputStream;
 	import java.io.DataOutputStream;
 	import java.io.EOFException;
 	import java.io.File;
@@ -60,10 +60,10 @@ public class AgendaContactosMain {
 
 			}else {
 			
-				Amigo a= new Amigo ("Rosa","Jimenez","615388653","14-05-80",1,9);
+				Amigo a= new Amigo ("Rosa","Jimenez","615345678","14-05-80",9,1);
 				contactos.add (a);
 
-				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",1,9);
+				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",9,1);
 				contactos.add(s);
 				
 				Agenda f= new Familiar("Maria","Mompel","679453267","18-12-80",3,8);			
@@ -113,6 +113,7 @@ public class AgendaContactosMain {
 					respuestaRedes=teclado.nextLine();
 					
 					ArrayList RedesA=new ArrayList<>();
+					
 					while(respuestaRedes.equals("si")) {
 							rd=DatosAgenda.añadirRedesSociales(teclado);
 							
@@ -148,7 +149,9 @@ public class AgendaContactosMain {
 					System.out.println("Si tienes a este amigo en las redes, añadiremos informacion");
 					teclado.nextLine();
 					respuestaRedes=teclado.nextLine();
+					
 					ArrayList RedesF=new ArrayList<>();
+					
 					while(respuestaRedes.equals("si")) {
 						rd=DatosAgenda.añadirRedesSociales(teclado);
 							
@@ -169,9 +172,9 @@ public class AgendaContactosMain {
 					
 					break;
 					
-				
 				case 3:
 					System.out.println("3.Mostrar la lista de contactos");
+					//El compareTo que yo añado al TreeSet es orden por nombre
 					DatosAgenda.mostrtarListaContactos(contactos);
 					
 					break;
@@ -180,9 +183,9 @@ public class AgendaContactosMain {
 				case 4:
 					System.out.println("4.Mostrar la lista de contactos ordenados por id");
 					DatosAgenda.mostrtarListaContactosporId(contactos);
-					
-					
+
 					break;
+					
 				case 5:
 					System.out.println("5.Buscar un contacto");
 					System.out.println("Introduzca datos a buscar (Nombre o Apellido):");
@@ -200,14 +203,15 @@ public class AgendaContactosMain {
 					Agenda contactoEliminar=null;
 					contactoEliminar = DatosAgenda.buscarContacto(nom, contactos);
 					DatosAgenda.eliminarContacto(contactoEliminar, contactos);
-					
-					
 					 
 					break;
+					
 				case 7:
 					System.out.println("7.Modificar un contacto");
 					Agenda mod= DatosAgenda.ModificarDatos(teclado, contactos);
+					
 					break;
+					
 				case 8:
 					System.out.println("7.Guardar los contactos");
 					try { 
@@ -243,8 +247,6 @@ public class AgendaContactosMain {
 					
 					System.out.println("Hasta pronto!");
 					break;
-					
-				
 					
 				
 					default:
