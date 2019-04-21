@@ -84,11 +84,10 @@ public class AgendaContactosMain {
 				System.out.println("|         1.Añadir nuevo amigo                                 |");
 				System.out.println("|         2.Añadir nuevo familiar                              |");
 				System.out.println("|         3.Mostrar la lista de contactos                      |");
-				System.out.println("|         4.Mostrar la lista de contactos  por id              |");
-				System.out.println("|         5.Buscar un contacto                                 |");
-				System.out.println("|         6.Borrar un contacto                                 |");
-				System.out.println("|         7.Modificar un contacto                              |");
-				System.out.println("|         8.Guardar los contactos                              |");
+				System.out.println("|         4.Buscar un contacto                                 |");
+				System.out.println("|         5.Borrar un contacto                                 |");
+				System.out.println("|         6.Modificar un contacto                              |");
+				System.out.println("|         7.Guardar los contactos                              |");
 				System.out.println("|                                                              |");
 				System.out.println("|______________________________________________________________|");
 				System.out.println("");
@@ -179,14 +178,7 @@ public class AgendaContactosMain {
 					
 					break;
 				
-					
 				case 4:
-					System.out.println("4.Mostrar la lista de contactos ordenados por id");
-					DatosAgenda.mostrtarListaContactosporId(contactos);
-
-					break;
-					
-				case 5:
 					System.out.println("5.Buscar un contacto");
 					System.out.println("Introduzca datos a buscar (Nombre o Apellido):");
 					teclado.nextLine();
@@ -195,7 +187,7 @@ public class AgendaContactosMain {
 					System.out.println("Ha buscado: "+busqueda);
 					break;
 					
-				case 6:
+				case 5:
 					System.out.println("6.Eliminar un contacto");
 					System.out.println("Introduzca datos del contacto que quiere eliminar:");
 					teclado.nextLine();
@@ -206,13 +198,13 @@ public class AgendaContactosMain {
 					 
 					break;
 					
-				case 7:
+				case 6:
 					System.out.println("7.Modificar un contacto");
 					Agenda mod= DatosAgenda.ModificarDatos(teclado, contactos);
 					
 					break;
 					
-				case 8:
+				case 7:
 					System.out.println("7.Guardar los contactos");
 					try { 
 						

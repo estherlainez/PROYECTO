@@ -130,12 +130,8 @@ public class DatosAgenda {
 		String telefonoNuevo=teclado.nextLine();
 		System.out.println("Fecha Nacimiento");
 		String fechaNueva=teclado.nextLine();
-		System.out.println("Origen");
-		int nuevoOrigen=teclado.nextInt();
 		System.out.println("Grado de confianza o afinidad");
 		int nuevaAfinidad=teclado.nextInt();
-		System.out.println("NuevoParentesco");
-		int nuevoParentesco=teclado.nextInt();
 		System.out.println("Tenia informacion de las redes sociales?");
 		teclado.nextLine();
 		
@@ -153,31 +149,43 @@ public class DatosAgenda {
 			 res=teclado.nextLine();
 		}
 		
-		Agenda contactoModificar=null;
 		String amigo="",familiar="",cercania="";
+		System.out.println("¿Que cercania? amigo o familiar");
+		cercania=teclado.nextLine();
+		int nuevoOrigen=0, nuevoParentesco=0;
+		if(cercania.equals("amigo")) {
+				System.out.println("Origen:");
+				nuevoOrigen=teclado.nextInt();
+			}else if(cercania.equals("familiar")) {
+				System.out.println("Parentesco:");
+				nuevoParentesco=teclado.nextInt();
+				}
 		
-		for(Agenda d: t) {
-			contactoModificar=d;
-			if(d.getNombre().equals(nombreModificar)) {		
-				d.setNombre(nombreNuevo);
-				d.setApellidos(apellidoNuevo);
-				d.setTelefono(telefonoNuevo);
-				d.setFecha_nacimiento(fechaNueva);
-				d.setValorAfinidad(nuevaAfinidad);
-				d.setDatosRD(nuevosDatos);
-				if(cercania.equals(amigo)) {
-					((Amigo) d).setOrigen(nuevoOrigen);
-					
-				}else if(cercania.equals(familiar)) {
-					((Familiar) d).setParentesco(nuevoParentesco);
+		Agenda contactoModificar=null;
+		
+			
+			for(Agenda d: t) {
+				contactoModificar=d;
+				if(d.getNombre().equals(nombreModificar)) {		
+					d.setNombre(nombreNuevo);
+					d.setApellidos(apellidoNuevo);
+					d.setTelefono(telefonoNuevo);
+					d.setFecha_nacimiento(fechaNueva);
+					d.setValorAfinidad(nuevaAfinidad);
+					d.setDatosRD(nuevosDatos);
+					if(cercania.equals("amigo")) {
+						((Amigo) d).setOrigen(nuevoOrigen);
+						
+						}else if(cercania.equals("familiar")) {
+							((Familiar) d).setParentesco(nuevoParentesco);
+						
+							}
 					
 				}
 			}
-		}
-		return contactoModificar;
 		
-	}
-
-
+			return contactoModificar;
+		}
+	
 	
 }
