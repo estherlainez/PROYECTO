@@ -49,6 +49,7 @@ public class DatosAgenda {
 	}
 	
 	
+	
 	public static Familiar añadirFamiliar(Scanner teclado,TreeSet <Agenda>c) {	
 	
 		System.out.println("Introduzca nombre");
@@ -80,17 +81,7 @@ public class DatosAgenda {
 		}
 	}
 	
-	public static void mostrtarListaContactosporId(TreeSet<Agenda> c) {
-		ArrayList <Agenda> contactos1 = new ArrayList<Agenda>();
-		contactos1.addAll(c);
-	  
-		Collections.sort(contactos1, new ComparaId());
-		
-		for (Agenda e:contactos1) {
-            System.out.println(e.toString());
-		 }
-		
-	}
+	
 	
 	public static Agenda buscarContacto(String n,TreeSet <Agenda> t) {
 		
@@ -101,6 +92,7 @@ public class DatosAgenda {
 		}
 		return null;
 	}
+	
 	
 
 	public static void eliminarContacto(Agenda a, TreeSet <Agenda> t) {
@@ -116,6 +108,8 @@ public class DatosAgenda {
 		 }
 		
 	}
+	
+	
 	
 	public static Agenda ModificarDatos( Scanner teclado, TreeSet<Agenda>t) {
 
