@@ -4,11 +4,13 @@ import java.util.TreeSet;
 public class Amigo extends Agenda {
 	
 	int origen;//sera aficion infancia o trabajo
+	int afinidad=CalcularAfinidad(getOrigen(), getValorAfinidad());
 	
 	//Este constructor es de prueba para no poner numero de codigo
-	public Amigo(String n,String a, String t, String f,int v,int o) {
+	public Amigo(String n,String a, String t, String f,int o,int v) {
 		super(n,a,t,f,v);
 		this.origen=o;
+		this.afinidad=CalcularAfinidad(getOrigen(), getValorAfinidad());
 	}
 	
 	
@@ -33,6 +35,13 @@ public class Amigo extends Agenda {
 		this.origen = origen;
 	}
 
+	public int getAfinidad() {
+		return afinidad;
+	}
+
+	public void setAfinidad(int afinidad) {
+		this.afinidad = afinidad;
+	}
 	
 
 	public int CalcularAfinidad(int origen, int valorAfinidad) {	

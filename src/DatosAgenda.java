@@ -1,6 +1,7 @@
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.NavigableMap;
 import java.util.Scanner;
 import java.util.Set;
@@ -93,7 +94,24 @@ public class DatosAgenda {
 		return null;
 	}
 	
-	
+	public static void listarEnOrdenPorAfinidad(TreeSet <Agenda> t) {
+
+		
+		TreeSet<Agenda> ordenaAfinidad=new TreeSet<Agenda>(new Comparator<Agenda>() {
+			public int compare(Agenda a1, Agenda a2) {
+				int af1=a1.getAfinidad();
+				int af2=a2.getAfinidad();
+				return a1.getAfinidad()-(a2.getAfinidad());
+			}
+		});
+		ordenaAfinidad.addAll(t);
+		for(Agenda cont: ordenaAfinidad) {
+			System.out.println(cont.toString());
+		}
+		
+		//System.out.println("Contactos ordenados por Afinidad: "+t.toString());
+
+	}
 
 	public static void eliminarContacto(Agenda a, TreeSet <Agenda> t) {
 		

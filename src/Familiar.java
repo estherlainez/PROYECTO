@@ -1,13 +1,14 @@
 
 public class Familiar extends Agenda{
 	int parentesco;
+	int afinidad=CalcularAfinidad(getParentesco(), getValorAfinidad());
 	
 	//Este constructor es de prueba por el codigo
 	public Familiar(String n, String a, String t, String f,int p,int v) {
 		super(n, a, t, f,v);
 		this.parentesco=p;
+		this.afinidad=CalcularAfinidad(getParentesco(), getValorAfinidad());
 	}
-	
 	 
 	public Familiar(int cod,String n,String a, String t, String f,int v) {
 		super(cod,n,a,t,f,v);
@@ -30,7 +31,13 @@ public class Familiar extends Agenda{
 		this.parentesco = parentesco;
 	}
 
+	public int getAfinidad() {
+		return afinidad;
+	}
 
+	public void setAfinidad(int afinidad) {
+		this.afinidad = afinidad;
+	}
 	
 
 

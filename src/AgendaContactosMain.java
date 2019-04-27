@@ -60,10 +60,10 @@ public class AgendaContactosMain {
 
 			}else {
 			
-				Amigo a= new Amigo ("Rosa","Jimenez","615345678","14-05-80",9,1);
+				Amigo a= new Amigo ("Rosa","Jimenez","615345678","14-05-80",2,7);
 				contactos.add (a);
 
-				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",9,1);
+				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",2,8);
 				contactos.add(s);
 				
 				Agenda f= new Familiar("Maria","Mompel","679453267","18-12-80",3,8);			
@@ -83,11 +83,12 @@ public class AgendaContactosMain {
 				System.out.println("|                    MENU                                      |");
 				System.out.println("|         1.Añadir nuevo amigo                                 |");
 				System.out.println("|         2.Añadir nuevo familiar                              |");
-				System.out.println("|         3.Mostrar la lista de contactos                      |");
-				System.out.println("|         4.Buscar un contacto                                 |");
-				System.out.println("|         5.Borrar un contacto                                 |");
-				System.out.println("|         6.Modificar un contacto                              |");
-				System.out.println("|         7.Guardar los contactos                              |");
+				System.out.println("|         3.Mostrar la contactos por nombre                    |");
+				System.out.println("|         4.Mostrar la lista por afinidad                      |");
+				System.out.println("|         5.Buscar un contacto                                 |");
+				System.out.println("|         6.Borrar un contacto                                 |");
+				System.out.println("|         7.Modificar un contacto                              |");
+				System.out.println("|         8.Guardar los contactos                              |");
 				System.out.println("|                                                              |");
 				System.out.println("|______________________________________________________________|");
 				System.out.println("");
@@ -177,8 +178,14 @@ public class AgendaContactosMain {
 					DatosAgenda.mostrtarListaContactos(contactos);
 					
 					break;
-				
 				case 4:
+					System.out.println("4.Mostrar la lista de contactos por afinidad");
+					
+					DatosAgenda.listarEnOrdenPorAfinidad(contactos);
+					
+					break;
+				
+				case 5:
 					System.out.println("5.Buscar un contacto");
 					System.out.println("Introduzca datos a buscar (Nombre o Apellido):");
 					teclado.nextLine();
@@ -187,7 +194,7 @@ public class AgendaContactosMain {
 					System.out.println("Ha buscado: "+busqueda);
 					break;
 					
-				case 5:
+				case 6:
 					System.out.println("6.Eliminar un contacto");
 					System.out.println("Introduzca datos del contacto que quiere eliminar:");
 					teclado.nextLine();
@@ -198,14 +205,14 @@ public class AgendaContactosMain {
 					 
 					break;
 					
-				case 6:
+				case 7:
 					System.out.println("7.Modificar un contacto");
 					Agenda mod= DatosAgenda.ModificarDatos(teclado, contactos);
 					
 					break;
 					
-				case 7:
-					System.out.println("7.Guardar los contactos");
+				case 8:
+					System.out.println("8.Guardar los contactos");
 					try { 
 						
 						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("c:\\archivos\\miAgenda.dat"));

@@ -17,6 +17,7 @@ public abstract class Agenda implements Serializable, Comparable{
 	protected static int indice=1;
 	TreeSet<Agenda> contactos;
 	ArrayList<RedesSociales> datosRD;
+	int afinidad;
 
 	
 	//constructor de prueba para el codigo
@@ -126,6 +127,14 @@ public abstract class Agenda implements Serializable, Comparable{
 		Agenda.indice = indice;
 	}
 
+	public int getAfinidad() {
+		return afinidad;
+	}
+
+
+	public void setAfinidad(int afinidad) {
+		this.afinidad = afinidad;
+	}
 	
 	@Override
 	public String toString() {
