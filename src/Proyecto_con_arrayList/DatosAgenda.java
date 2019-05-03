@@ -122,9 +122,18 @@ public class DatosAgenda {
 		}
 		return null;
 	}
+	/*
+	public static Agenda buscarContactosPorLetra(String n,ArrayList <Agenda> t) {
+		
 	
-	
-
+		char[]caracteres=n.toCharArray();
+		
+		for (int x=0;x<caracteres.length;x++) {
+			  System.out.println(" + x + " + caracteres[x]);
+		}
+		return contactos;
+	}
+*/
 	public static void eliminarContacto(Agenda a, ArrayList <Agenda> t) {
 		
 		if(t.contains(a)) {
