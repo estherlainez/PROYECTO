@@ -28,7 +28,7 @@ public class AgendaContactosMain {
 			Scanner teclado=new Scanner (System.in);
 			
 			
-			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0,id=0;
+			int opcion=0,indice=0,valor=0,afinidad=0,parentesco=0,id=0,orden=0;
 			String nombre = null,nick = null;
 			String elige="si";
 			String elige1="no";
@@ -45,15 +45,16 @@ public class AgendaContactosMain {
 			if(file.exists()) {
 				try {
 					ObjectInputStream stream= new ObjectInputStream(new FileInputStream(file));
-					while(true) {
-				
+					
+					
+					while(true && indice!=-1) {		
 						p =(Agenda) stream.readObject();			
-						contactos.add(p);
-						
+						contactos.add(p);	
+						Agenda.setIndice(orden);
 						indice ++;
-
-
 					}
+					
+					
 				}catch(EOFException e) {
 					System.out.println("Fin de la agenda. Tenemos en la agenda "+contactos.size()+" contactos");
 				}catch(IOException ex) {
@@ -63,16 +64,16 @@ public class AgendaContactosMain {
 
 			}else {
 			
-				Amigo a= new Amigo ("Rosa","Jimenez","615345678","14-05-80",2,7);
+				Amigo a= new Amigo ("Maria","Jimenez","615345678","14-05-80",2,7);
 				contactos.add (a);
 
-				Amigo s= new Amigo("Jorge","Royo","665786512","31-05-76",2,8);
+				Amigo s= new Amigo("Juan","Royo","665786512","31-05-76",2,8);
 				contactos.add(s);
 				
-				Agenda f= new Familiar("Maria","Mompel","679453267","18-12-80",3,8);			
+				Familiar f= new Familiar("Sara","Mompel","679453267","18-12-80",3,8);			
 				contactos.add(f);
 				
-				Familiar g= new Familiar("Roberto","Navarro","669098986","14-04-1974",2,8);
+				Familiar g= new Familiar("Lucia","Navarro","669098986","14-04-1974",2,8);
 				contactos.add(g);
 			}
 		
@@ -222,6 +223,7 @@ public class AgendaContactosMain {
 							
 						for (Agenda m: contactos) {	
 								out.writeObject(m);
+			
 						} 
 						
 						out.close();
@@ -234,10 +236,11 @@ public class AgendaContactosMain {
 						ObjectInputStream ois= new ObjectInputStream(new FileInputStream(file));
 						while(true) {
 					
-							p =(Agenda) ois.readObject();			
+							p =(Agenda) ois.readObject();	
 							contactos.add(p);
 							System.out.println("Guardado: "+p);
 							indice ++;
+							orden=contactos.size();
 
 						}
 					}catch(EOFException e) {
