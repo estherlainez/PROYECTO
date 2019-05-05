@@ -122,18 +122,29 @@ public class DatosAgenda {
 		}
 		return null;
 	}
-	/*
-	public static Agenda buscarContactosPorLetra(String n,ArrayList <Agenda> t) {
-		
 	
-		char[]caracteres=n.toCharArray();
-		
-		for (int x=0;x<caracteres.length;x++) {
-			  System.out.println(" + x + " + caracteres[x]);
+	
+	
+	public static void buscarContactosPorLetra(char n, ArrayList <Agenda> t) {
+
+		for(Agenda a: t) {
+			ArrayList<Agenda>resultado= new ArrayList<Agenda>();
+			String nombre= a.getNombre();
+			n=Character.toLowerCase(n);
+			nombre.toLowerCase();
+			
+			if(nombre.charAt(0)==n) {
+				resultado.add(a);
+				}
+			System.out.println(resultado);
 		}
-		return contactos;
+		
+		
+		
 	}
-*/
+
+	
+	//if(nombre.charAt(0)==n) {
 	public static void eliminarContacto(Agenda a, ArrayList <Agenda> t) {
 		
 		if(t.contains(a)) {

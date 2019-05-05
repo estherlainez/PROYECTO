@@ -33,6 +33,7 @@ public class AgendaContactosMain {
 			String elige="si";
 			String elige1="no";
 			String respuestaRedes="";
+			
 			ArrayList <Agenda> contactos = new ArrayList<>();
 
 			
@@ -90,9 +91,10 @@ public class AgendaContactosMain {
 				System.out.println("|         3.Mostrar los contactos por nombre                   |");
 				System.out.println("|         4.Mostrar los contactos por afinidad                 |");
 				System.out.println("|         5.Buscar un contacto                                 |");
-				System.out.println("|         6.Borrar un contacto                                 |");
-				System.out.println("|         7.Modificar un contacto                              |");
-				System.out.println("|         8.Guardar los contactos                              |");
+				System.out.println("|         6.Buscar  contactos que empiecen por....             |");
+				System.out.println("|         7.Borrar un contacto                                 |");
+				System.out.println("|         8.Modificar un contacto                              |");
+				System.out.println("|         9.Guardar los contactos                              |");
 				System.out.println("|                                                              |");
 				System.out.println("|______________________________________________________________|");
 				System.out.println("");
@@ -200,14 +202,21 @@ public class AgendaContactosMain {
 					System.out.println("Ha buscado: "+busqueda);
 					break;
 					
+					
+					
+					
 				case 6:
 					System.out.println("5.Buscar contactos por letra");
-					
+
 					System.out.println("Introduzca letra :");
-			
-					
+					char letra= teclado.next().charAt(0);
+					 
+					DatosAgenda.buscarContactosPorLetra(letra, contactos); 
+				//	System.out.println("Su resultado: "+s);
 					
 					break;
+					
+					
 					
 				case 7:
 					System.out.println("6.Eliminar un contacto");
