@@ -206,14 +206,31 @@ public class AgendaContactosMain {
 					
 					
 				case 6:
-					System.out.println("5.Buscar contactos por letra");
-
+					System.out.println("6.Buscar contactos por letra");
 					System.out.println("Introduzca letra :");
 					char letra= teclado.next().charAt(0);
-					 
-					DatosAgenda.buscarContactosPorLetra(letra, contactos);
-				
+					String aBuscar="";
 					
+					
+					ArrayList<Agenda>prueba=new ArrayList<Agenda>();
+					prueba.addAll(contactos);
+					ArrayList<Agenda>resultado= new ArrayList<Agenda>();
+					
+					for(int i=0;i<contactos.size();i++) {
+							Agenda x = contactos.get(i);
+							//System.out.println(contactos.get(i));
+							aBuscar=x.getNombre();
+							letra=Character.toLowerCase(letra);
+							aBuscar.toLowerCase();
+							System.out.println(aBuscar.charAt(0));
+							
+							if(aBuscar.charAt(0)==letra) {
+								System.out.println(x);
+								resultado.add(x);
+							}
+						
+						}	
+						System.out.println(resultado);
 					break;
 					
 					
