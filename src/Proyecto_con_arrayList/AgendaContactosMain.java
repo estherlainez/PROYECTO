@@ -211,8 +211,8 @@ public class AgendaContactosMain {
 					System.out.println("Introduzca letra :");
 					char letra= teclado.next().charAt(0);
 					 
-					DatosAgenda.buscarContactosPorLetra(letra, contactos); 
-				//	System.out.println("Su resultado: "+s);
+					DatosAgenda.buscarContactosPorLetra(letra, contactos);
+				
 					
 					break;
 					

@@ -124,24 +124,26 @@ public class DatosAgenda {
 	}
 	
 	
-	
-	public static void buscarContactosPorLetra(char n, ArrayList <Agenda> t) {
+	public  static void buscarContactosPorLetra(char n, ArrayList <Agenda> t) {
 
-		for(Agenda a: t) {
-			ArrayList<Agenda>resultado= new ArrayList<Agenda>();
-			String nombre= a.getNombre();
+		for(int i=0;i<t.size();i++) {
+			ArrayList<Agenda>prueba=new ArrayList<Agenda>();
+			prueba.addAll(t);
+			
+			Agenda p=null;
+			String nombre= p.getNombre();
 			n=Character.toLowerCase(n);
 			nombre.toLowerCase();
 			
+			ArrayList<Agenda>resultado= new ArrayList<Agenda>();
 			if(nombre.charAt(0)==n) {
-				resultado.add(a);
+				resultado.add(p);
 				}
 			System.out.println(resultado);
-		}
-		
-		
+		}	
 		
 	}
+	
 
 	
 	//if(nombre.charAt(0)==n) {
