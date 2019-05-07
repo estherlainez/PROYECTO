@@ -113,6 +113,7 @@ public class DatosAgenda {
 	}
 
 
+	
 	public static Agenda buscarContacto(String n,ArrayList <Agenda> t) {
 		
 		for(Agenda a: t) {
@@ -214,4 +215,23 @@ public class DatosAgenda {
 		}
 	
 	
+	
+	public static ArrayList<Agenda> buscarEnInicio(ArrayList<Agenda> nombres, String inicio){
+		inicio=inicio.toLowerCase();
+		ArrayList<Agenda> salida = new ArrayList<Agenda>();
+
+		for (Agenda contacto : nombres) { 
+			String aBuscar= contacto.getNombre();
+			if(contacto.getNombre().equals(aBuscar)) {
+				contacto.toString();
+			}
+			
+
+			if(aBuscar.toLowerCase().startsWith(inicio)){
+				
+				salida.add(contacto);
+			}
+		}
+		return salida;
+	}
 }
