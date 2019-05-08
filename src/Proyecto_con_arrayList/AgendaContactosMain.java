@@ -219,7 +219,7 @@ public class AgendaContactosMain {
 					
 					
 				case 7:
-					System.out.println("6.Eliminar un contacto");
+					System.out.println("7.Eliminar un contacto");
 					System.out.println("Introduzca datos del contacto que quiere eliminar:");
 					teclado.nextLine();
 					nom=teclado.nextLine();
@@ -230,13 +230,13 @@ public class AgendaContactosMain {
 					break;
 					
 				case 8:
-					System.out.println("7.Modificar un contacto");
+					System.out.println("8.Modificar un contacto");
 					Agenda mod= DatosAgenda.ModificarDatos(teclado, contactos);
 					
 					break;
 					
 				case 9:
-					System.out.println("7.Guardar los contactos");
+					System.out.println("9.Guardar los contactos");
 					try { 
 						
 						ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("c:\\archivos\\miAgendaConArrayList.dat"));

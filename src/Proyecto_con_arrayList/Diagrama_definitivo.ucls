@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="Agenda" project="PROYECTO_PROGRAMACION" 
-    file="/PROYECTO_PROGRAMACION/src/Agenda.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="615" width="243" x="38" y="-226"/>    
+  <class id="1" language="java" name="Proyecto_con_arrayList.Agenda" project="PROYECTO_PROGRAMACION" 
+    file="/PROYECTO_PROGRAMACION/src/Proyecto_con_arrayList/Agenda.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="588" width="243" x="32" y="-27"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="Amigo" project="PROYECTO_PROGRAMACION" 
-    file="/PROYECTO_PROGRAMACION/src/Amigo.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="449" y="-122"/>    
+  <class id="2" language="java" name="Proyecto_con_arrayList.Amigo" project="PROYECTO_PROGRAMACION" 
+    file="/PROYECTO_PROGRAMACION/src/Proyecto_con_arrayList/Amigo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="433" y="110"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="Familiar" project="PROYECTO_PROGRAMACION" 
-    file="/PROYECTO_PROGRAMACION/src/Familiar.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="477" y="233"/>    
+  <class id="3" language="java" name="Proyecto_con_arrayList.Familiar" project="PROYECTO_PROGRAMACION" 
+    file="/PROYECTO_PROGRAMACION/src/Proyecto_con_arrayList/Familiar.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="439" y="420"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="RedesSociales" project="PROYECTO_PROGRAMACION" 
-    file="/PROYECTO_PROGRAMACION/src/RedesSociales.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="774" y="72"/>    
+  <class id="4" language="java" name="Proyecto_con_arrayList.RedesSociales" project="PROYECTO_PROGRAMACION" 
+    file="/PROYECTO_PROGRAMACION/src/Proyecto_con_arrayList/RedesSociales.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="736" y="268"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,28 +39,28 @@
   </class>  
   <association id="5">    
     <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="6" name="datosRD"/>      
+      <attribute id="6" name="contactos"/>      
       <multiplicity id="7" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="8">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <generalization id="9">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="1"/>  
-  </generalization>  
-  <association id="10">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="11" name="contactos"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="8">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="9" name="datosRD"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
