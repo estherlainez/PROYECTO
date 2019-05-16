@@ -104,7 +104,7 @@ public class DatosAgenda {
 			public int compare(Object o1, Object o2) {
 				Agenda a1=(Agenda)o1;
 				Agenda a2=(Agenda)o2;
-				return a1.getAfinidad()-(a2.getAfinidad());
+				return (a2.getAfinidad()-a1.getAfinidad());
 			}
 		});
 		
