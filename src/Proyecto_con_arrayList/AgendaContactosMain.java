@@ -37,7 +37,6 @@ public class AgendaContactosMain {
 			ArrayList <Agenda> contactos = new ArrayList<>();
 
 			
-			
 			File file = new File("c:\\archivos\\miAgendaConArrayList.dat");
 			Agenda p = null;
 			Agenda b= null;
