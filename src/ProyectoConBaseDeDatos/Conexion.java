@@ -56,7 +56,7 @@ public class Conexion {
 		return afinidad;
 	}
 	
-	public int CalcularAfinidadFamiliar(int gradoParentesco, int valor) {
+	public static int CalcularAfinidadFamiliar(int gradoParentesco, int valor) {
 		
 		int afinidad=0;
 		if (gradoParentesco==1) {
@@ -96,7 +96,7 @@ public class Conexion {
 		Scanner teclado=new Scanner(System.in);
 		System.out.println("introduce el id del contacto que queremos modificar");
 		int codigo=teclado.nextInt();
-		
+		int v=0,n=0,afi2=0;
 	
 		String sql = "UPDATE contactos " +
 				"SET Id=?," +
@@ -107,7 +107,8 @@ public class Conexion {
 				"Tipo=?," +
 				"Parentesco=?," +
 				"Origen=?," +
-				"Afinidad=?  WHERE contactos.Id = "+codigo+";"; 
+				"Afinidad=?," +
+				"ValorAfinidad=?  WHERE contactos.Id = "+codigo+";"; 
 		
 		try {
 			PreparedStatement sentencia=conector.prepareStatement(sql);
@@ -139,18 +140,36 @@ public class Conexion {
 			String par=teclado.nextLine();
 			sentencia.setString(7, par);
 			
-			System.out.println("\n Inserte origen en caso de amigo :");
+			if(par.equals("grado1")) {
+				 n=1;
+				}else if(par.equals("grado2")){
+					n=2;
+				}else if(par.equals("grado3")){
+					n=3;
+					}
+			System.out.println("\n Inserte origen en caso de amigo (hobbies, infancia,trabajo):");
 			String or=teclado.nextLine();
 			sentencia.setString(8, or);
 			
+			if(or.equals("hobbies")) {
+				 v=1;
+				}else if(or.equals("infancia")){
+					v=2;
+				}else if(or.equals("trabajo")){
+					v=3;
+					}
 			System.out.println("\n Inserte afinidad(confianza en su amigo o familiar):");
 			int afi=teclado.nextInt();
 			sentencia.setInt(9, afi);
 			
-			System.out.println("\n Valor afinidad");
-			int afi2=teclado.nextInt();
+			System.out.println("Vamos a calcular el nivel de afinidad");
+			if(tipo.equals("amigo")) {
+					afi2=Conexion.CalcularAfinidadAmigo(v, afi);
+				}else if(tipo.equals("familiar")) {
+					afi2=Conexion.CalcularAfinidadFamiliar(n, afi);
+			}
 			sentencia.setInt(10, afi2);
-			
+			System.out.println("La afinidad es de: "+afi2);
 		
 			int rsp=sentencia.executeUpdate();
 			System.out.println("\n Contacto modificado con exito!!!");
@@ -163,7 +182,7 @@ public class Conexion {
 	}
 
 
-	public static void añadirContacto() {
+	public static void añadirContactoAmigo() {
 		Scanner teclado=new Scanner(System.in);
 		String 	sql="INSERT INTO contactos  VALUES (?,?, ?, ?, ?, ?, ?, ?,?,?);";
 		try {
@@ -199,20 +218,33 @@ public class Conexion {
 			String parentesco=teclado.nextLine();
 			sentencia.setString(7, parentesco);
 			
-			System.out.println("\n Inserte origen :");
-			System.out.println("Solo para amigos. Podra ser: Infancia, hobbies, trabajo");
-			String origen=teclado.nextLine();
-			sentencia.setString(8, origen);
 			
-			System.out.println("\n Inserte afinidad de 0 a 10:");
-			System.out.println("Aqui mostramos la confianza con su contacto");
+			System.out.println("\n Inserte origen en caso de amigo (hobbies, infancia,trabajo):");
+			String or=teclado.nextLine();
+			sentencia.setString(8, or);
+			
+			System.out.println("Ahora veremos la afinidad de su amigo");
+			int n=0,afi2;
+			if(or.equals("hobbies")) {
+				 n=1;
+				}else if(or.equals("infancia")){
+					n=2;
+				}else if(or.equals("trabajo")){
+					n=3;
+					}
+			System.out.println("\n Inserte afinidad(confianza en su amigo o familiar):");
 			int afi=teclado.nextInt();
 			sentencia.setInt(9, afi);
 			
-			System.out.println("\n Aqui el programa muestra el valor de afinidad");
+			System.out.println("Vamos a calcular el nivel de afinidad");
+			afi2=Conexion.CalcularAfinidadAmigo(n, afi);
 			
-			int afi2=teclado.nextInt();
 			sentencia.setInt(10, afi2);
+			
+			
+			System.out.println("\n Aqui el programa muestra el valor de afinidad: "+afi2);
+			
+			
 			
 			int rsp=sentencia.executeUpdate();
 			
@@ -264,7 +296,120 @@ public class Conexion {
 
 	}
 	
+	public static void añadirContactoFamiliar() {
+		Scanner teclado=new Scanner(System.in);
+		String 	sql="INSERT INTO contactos  VALUES (?,?, ?, ?, ?, ?, ?, ?,?,?);";
+		try {
+			PreparedStatement sentencia=conector.prepareStatement(sql);
+			System.out.println("\n Inserte Id:");
+			int id=teclado.nextInt();
+			sentencia.setInt(1, id);
+			teclado.nextLine();
+			System.out.println("\n Inserte Nombre:");
+			String nombre=teclado.nextLine();
+			sentencia.setString(2, nombre);
+			
+			System.out.println("\n Inserte Apellidos:");
+			String apellidos=teclado.nextLine();
+			sentencia.setString(3, apellidos);
+			
+			System.out.println("\n Inserte telefono:");
+			String telefono=teclado.nextLine();
+			sentencia.setString(4, telefono);
+			
+			System.out.println("\n Inserte fecha nacimiento:");
+			String fechaN=teclado.nextLine();
+			sentencia.setString(5, fechaN);
+			
+			System.out.println("\n Inserte tipo:");
+			System.out.println("Aqui elegimos si es amigo o familiar");
+			String tipo=teclado.nextLine();
+			sentencia.setString(6, tipo);
+			
+			System.out.println("\n Inserte Parentesco:");
+			System.out.println(" Solo para los contactos familiares");
+			System.out.println("El parentesco sera: grado1, grado2, grado3");
+			String parentesco=teclado.nextLine();
+			sentencia.setString(7, parentesco);
+			
+			
+			System.out.println("\n Inserte origen en caso de amigo, si no pulse enter");
+			String or=teclado.nextLine();
+			sentencia.setString(8, or);
+			
+			System.out.println("Ahora veremos la afinidad de su familiar");
+			int n=0,afi2;
+			if(parentesco.equals("grado1")) {
+				 n=1;
+				}else if(parentesco.equals("grado2")){
+					n=2;
+				}else if(parentesco.equals("grado3")){
+					n=3;
+					}
+			System.out.println("\n Inserte afinidad(confianza en su familiar):");
+			int afi=teclado.nextInt();
+			sentencia.setInt(9, afi);
+			
+			System.out.println("Vamos a calcular el nivel de afinidad");
+			afi2=Conexion.CalcularAfinidadFamiliar(n, afi);
+			
+			sentencia.setInt(10, afi2);
+			
+			
+			System.out.println("\n Aqui el programa muestra el valor de afinidad: "+afi2);
+			
+			
+			
+			int rsp=sentencia.executeUpdate();
+			
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		String respuesta=teclado.nextLine();
+		String si="",no="";
+		teclado.nextLine();
+		System.out.println("\n Tiene a este contacto en las redes sociales???");
+	
+		respuesta=teclado.nextLine();
+		
+		if(respuesta.equals("si")) {
+			sql="INSERT INTO redessociales  VALUES (?,?,?,?,?);";
+			try {
+				PreparedStatement sentencia=conector.prepareStatement(sql);
+				System.out.println("Inserte el Id del contacto");
+				int id=teclado.nextInt();
+				sentencia.setInt(1, id);
+				teclado.nextLine();
+				System.out.println("\n Inserte Nombre red:");
+				String nombreRed1=teclado.nextLine();
+				sentencia.setString(2, nombreRed1);
+				System.out.println("\n Inserte Nick:");
+				String nick1=teclado.nextLine();
+				sentencia.setString(3, nick1);									
+				System.out.println("\n Inserte Nombre red:");
+				String nombreRed2=teclado.nextLine();
+				sentencia.setString(4, nombreRed2);								
+				System.out.println("\n Inserte Nick:");
+				String nick2=teclado.nextLine();
+				sentencia.setString(5, nick2);
+				
+				
+				int rsp=sentencia.executeUpdate();
+				System.out.println("\n Hemos acabado, contacto añadido!!!");
+				
+				sentencia.close();
+			} catch (Exception e) {
+			
+				e.printStackTrace();
+			}
+	}
+	
 
+
+	}
+	
 	
 	public static void buscarContacto() {
 		Scanner teclado=new Scanner(System.in);
