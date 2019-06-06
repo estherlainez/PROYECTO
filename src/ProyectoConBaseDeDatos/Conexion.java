@@ -475,10 +475,11 @@ public class Conexion {
 			 while (rs.next()) {
 					for (int i=1;i<=rs.getMetaData().getColumnCount();i++) {
 						System.out.print(rs.getString(i)+"\t");
-						System.out.println(" ");
+						
 					}
+					System.out.println("");
 			 }	
-				System.out.println(" ");
+			System.out.println(" ");
 			
 			sentencia.close();
 		}catch (Exception e) {
